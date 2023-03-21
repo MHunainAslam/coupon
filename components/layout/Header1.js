@@ -24,12 +24,12 @@ console.log(data);
     return (
         <>
 
-            <nav className="navbar navbar-expand-lg bg-white">
+            <nav className="navbar navbar-expand-lg ">
                 <div className="container-fluid">
-                    <Link className="navbar-brand" href="/">
-                        <Image src={data?.url + "/" + data?.logo?.header || logo} alt="" className={'position-relative my-1 '} width={300} height={50}/>
+                    <Link className="navbar-brand " href="/">
+                        <Image src={data?.url + "/" + data?.logo?.header || logo} alt="" className={'position-relative my-1 header-logo w-100'} fill={true}/>
                     </Link>
-                    <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <button className="navbar-toggler " type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
                     </button>
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">

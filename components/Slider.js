@@ -13,7 +13,7 @@ const Slider = ({ data }) => {
     const [loading, setLoading] = useState(true);
     const [err, setError] = useState(false);
     const [slider, setSlider] = useState([]);
-    const [img, setImg] = useState('');
+    const [img, setImg] = useState();
 
 
     // const slider = await (await fetch(`${APP_URL}api/slider?key=${APP_KEY}`)).json();
@@ -40,11 +40,7 @@ const Slider = ({ data }) => {
             {data.Style === 1 ?
                 <div id="carouselExampleControlsNoTouching" class="carousel slide slider-css" data-bs-touch="false">
                     <div class="carousel-inner">
-                        {loading ?
-                            <div class="carousel-item active h-100">
-                                <Spinner />
-                            </div>
-                            :
+                        {
                             err ?
                                 <div class="carousel-item active h-100">
                                     <p className="mb-0 w-100 text-center">Someething went wrong</p>

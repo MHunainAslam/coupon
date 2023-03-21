@@ -97,7 +97,7 @@ const Couponslider = ({ styledata }) => {
                 <Slider {...settings}>
                     {mostview?.data?.data?.map((item) => {
                         return <div className='col px-2'>
-                            <Couponcard item={item} data={styledata} />
+                            <Couponcard item={item} data={styledata} img={mostview.url} />
                         </div>
                     })}
 

@@ -50,7 +50,7 @@ const Popular = ({ styledata }) => {
 
     ]
     return (
-        <> {loading ? <Spinner/> :
+        <>
             <div className="container pt-5">
                 <h3 className='head1'>
                     {styledata.Style === 1 ? " Most Popular Stores" : "Your Most Favorite Stores"}
@@ -67,7 +67,7 @@ const Popular = ({ styledata }) => {
                     :
                     ''}
             </div>
-             }
+            
         </>
              
     )

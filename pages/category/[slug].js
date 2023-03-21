@@ -50,7 +50,7 @@ const category = () => {
            <div className="row">
           <h2> {slug} Coupons & Promo Codes </h2>
            {catcard.map((item) => {
-                return <div className="px-1 col-md-4">
+                return <div className="cat-card col-md-4">
                     <Link  href={`/store/${item.slug}`} > <Categorycrad item={item} /></Link>
                 </div>
             })}

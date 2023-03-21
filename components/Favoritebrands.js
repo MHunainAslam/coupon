@@ -37,14 +37,14 @@ const Favoritebrands = ({ styledata }) => {
     // ]
     return (
         <>
-        {loading ? <Spinner/> :
+        
             <div className='container py-5'>
                 <h3 className='fw-500 head1 '> {styledata.Style === 1 ? "CODES FOR YOUR FAVOURITE BRANDS" : "Shop Your Desired Categories"} </h3>
                 <div className="row bg-white py-3 ">
-                    {brands.data.map(item => <div className="col-6 col-md-3 my-2 fav-brand-coupon"> <Link href='#'> {item.name} </Link>  </div>)}
+                    {brands?.data?.map(item => <div className="col-6 col-md-3 my-2 fav-brand-coupon"> <Link href='#'> {item.name} </Link>  </div>)}
                 </div>
             </div>
-}
+
         </>
     )
 }

@@ -21,7 +21,7 @@ a {
   text-decoration: none;
 }
 
-.bg-primary {
+.bg-secondary {
   background-color: var(--primary) !important;
   background: var(--primary) !important;
 
@@ -40,7 +40,7 @@ a {
   transition: all 0.5s;
 }
 
-.bg-secondary {
+.bg-primary {
   background-color: var(--secondary) !important;
   background: var(--secondary) !important;
 }
@@ -54,11 +54,11 @@ a {
 
 }
 
-.text-primary {
+.text-secondary {
   color: var(--primary) !important;
 }
 
-.text-secondary {
+.text-primary {
   color: var(--secondary) !important;
 }
 
@@ -91,13 +91,13 @@ a {
   cursor: pointer;
 }
 
-.button-primary {
+.button-secondary {
 
   background-color: var(--primary);
 
 }
 
-.button-secondary {
+.button-primary {
   background-color: var(--secondary);
 }
 
@@ -257,11 +257,23 @@ main[store-style="1"] .button {
   text-align: center;
   text-transform: uppercase;
 }
-
-.w-40 {
-  width: 40%;
+.cat-card{
+  padding: 2px;
+  height: 80px;
 }
-
+.w-40 {
+  width: 40% !important;
+}
+.container{
+  min-height: 100vh;
+}
+.footer-1{
+  /* position: absolute; */
+  /* bottom: 0; */
+}
+.footer1-logo{
+  aspect-ratio: 1/0.3;
+}
 .flex-align:hover~.nav-dropdown {
   display: none;
 
@@ -275,7 +287,7 @@ main[store-style="1"] .button {
 
 .dropdown-item-hov:focus,
 .dropdown-item-hov:hover {
-  background-color: var(--secondary);
+  background-color: var(--primary);
   color: white;
 }
 
@@ -411,6 +423,9 @@ main[store-style="1"] .button {
 }
 .footer-link li{
   list-style: none;
+}
+.header-logo{
+  aspect-ratio: 1/0.3;
 }
 
 @media (max-width: 1200px) {}

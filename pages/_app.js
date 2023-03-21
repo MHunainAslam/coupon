@@ -71,6 +71,7 @@ export default function App({ Component, pageProps }) {
           }`
         }
       </style>
+      {loading ? <Spinner /> :
       <Layout title="Home - " metaTitle="" metaDescription="A" logo="" themeData={data}>
         {
           data.Style === 1 ?
@@ -90,7 +91,7 @@ export default function App({ Component, pageProps }) {
         }
       </Layout>
 
-
+}
     </>
   }
 

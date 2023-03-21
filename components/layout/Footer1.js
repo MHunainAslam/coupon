@@ -7,10 +7,10 @@ const Footer1 = ({data}) => {
   return (
     <>
   
-        <div className='container-fluid bg-secondary'>
+        <div className='container-fluid bg-secondary footer-1'>
           <div className="row">
             <div className="col-md-3 my-auto ">
-             <Link href=""> <Image src={data?.url + "/" + data?.logo?.header || logo} fill={true}  className="h-auto w-40 position-relative"></Image></Link>
+             <Link href=""> <Image src={data?.url + "/" + data?.logo?.header || logo} fill={true}  className="footer1-logo w-40 position-relative"></Image></Link>
             </div>
             <div className="col-md-3 text-white text-center  my-auto">
               <p className='my-auto'> All Right Reserved</p>

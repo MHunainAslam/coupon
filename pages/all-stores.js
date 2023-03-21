@@ -50,7 +50,7 @@ const all_stores = ({ styledata }) => {
     console.log(allstore);
     return (
         <>
-        {loading ? <Spinner/> : err ? "Something Went Wrong" : 
+        { err ? "Something Went Wrong" : 
             <div className="container">
                 <div className="">
                     <h3 className='ps-0 my-3'>Browse Your Coupon By Store</h3>

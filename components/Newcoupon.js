@@ -109,7 +109,7 @@ const Newcoupon = ({ styledata }) => {
 
     return (
         <>
-            {loding ?
+         
                 <div className="container mt-5">
                     <h3 className='head1 pt-5'>{styledata.Style === 1 ? "New Coupons" : "Today's Most Popular Deals"}</h3>
                     <div className='row '>
@@ -122,11 +122,10 @@ const Newcoupon = ({ styledata }) => {
                     </div>
                     <div className=" text-center my-3">
                         {styledata.Style === 1 ? <Link href='/all-stores' className={`p-2 button ${styledata?.Style === 1 ? 'button-primary' : 'button-secondary'}`}>View All</Link>
-                            : <Spinner/>}
+                            : ""}
                     </div>
-                </div> :
-                "hhh"
-            }
+                </div> 
+        
 
 
 

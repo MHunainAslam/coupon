@@ -66,13 +66,12 @@ const Popularcoupon = ({ data }) => {
 
     return (
         <>
-            {loding ? <Spinner/> :
                 <div className="container mt-5">
                     <h3 className='head1 pt-5'>Most Popular Coupons</h3>
                     <div className='row '>
                         {coupon?.data?.data?.map((item) => {
                             return <div className="col-12 col-sm-6 col-md-3 my-1 p-1">
-                                <Couponcard item={item} data={data} />
+                                <Couponcard item={item} data={data} img={coupon.url}/>
                             </div>
                         })}
                     </div>
@@ -80,7 +79,7 @@ const Popularcoupon = ({ data }) => {
                         <Link href='/all-stores' className={`p-2 button  ${data?.Style === 1 ? 'button-primary' : 'button-secondary'}`}>View All</Link>
                     </div>
                 </div>
-                }
+               
         </>
     )
 }
