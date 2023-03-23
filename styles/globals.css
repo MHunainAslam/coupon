@@ -26,6 +26,18 @@ a {
   background: var(--primary) !important;
 
 }
+.bg-header{
+  background-color: var(--header) !important;
+}
+.text-header{
+  color: var(--header-text) !important;
+}
+.header-btn-bg{
+  background-color: var(--header-btn-bg) !important;
+}
+.header-btn-text{
+  color: var(--header-btn-text) !important;
+}
 
 .card-hover {
   border: 2px solid transparent;
@@ -36,7 +48,7 @@ a {
 }
 
 .card-hover:hover {
-  border-color: var(--secondary);
+  border-color: var(--primary);
   transition: all 0.5s;
 }
 
@@ -221,7 +233,7 @@ main[store-style="1"] .button {
 }
 
 .new-coupon {
-  height: 350px;
+  height: 330px;
 }
 
 .new-coupon-title:hover {
@@ -265,7 +277,7 @@ main[store-style="1"] .button {
   width: 40% !important;
 }
 .container{
-  min-height: 100vh;
+  min-height: 90vh;
 }
 .footer-1{
   /* position: absolute; */
@@ -322,7 +334,7 @@ main[store-style="1"] .button {
 }
 
 .cat-page-title {
-  color: var(--secondary);
+  color: var(--primary);
   z-index: 1;
 }
 

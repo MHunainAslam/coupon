@@ -91,7 +91,7 @@ const Couponslider = ({ styledata }) => {
 
     return (
         <>
-            <div className='container my-5'>
+            <div className='container d-none my-5'>
                 <h2 className='ms-2'>Most View Coupons</h2>
                 {/* {loading ? */}
                 <Slider {...settings}>

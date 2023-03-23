@@ -67,11 +67,15 @@ export default function App({ Component, pageProps }) {
         {
           `:root{
               --primary: ${data?.color?.primary || 'green'};
-              --secondary: ${data?.color?.secondary || '#1b96b8'} 
+              --secondary: ${data?.color?.secondary || '#1b96b8'};
+              --header: ${data?.header?.background || 'blue'} ;
+              --header-text: ${data?.header?.color || 'white'} ;
+              --header-btn-bg: ${data?.header?.button_color || 'white'} ;
+              --header-btn-text: ${data?.header?.button_background || 'black'} ;
           }`
         }
       </style>
-      {loading ? <Spinner /> :
+      
       <Layout title="Home - " metaTitle="" metaDescription="A" logo="" themeData={data}>
         {
           data.Style === 1 ?
@@ -90,9 +94,9 @@ export default function App({ Component, pageProps }) {
             <Footer2 data={data} />
         }
       </Layout>
-
-}
+      
     </>
+    
   }
 
 }
