@@ -116,12 +116,12 @@ const Newcoupon = ({ styledata }) => {
                         {coupon?.data?.data?.map((item) => {
                             return <div className=" col-12 col-sm-6 col-md-3 my-1 p-1">
 
-                                <Newcouponcard item={item} data={styledata} img={coupon?.url} />
+                                <    item={item} data={styledata} img={coupon?.url} />
                             </div>
                         })}
                     </div>
                     <div className=" text-center my-3">
-                        {styledata.Style === 1 ? <Link href='/all-stores' className={`p-2 button ${styledata?.Style === 1 ? 'button-primary' : 'button-secondary'}`}>View All</Link>
+                        {styledata.Style === 1 ? <Link href='/trending-coupon' className={`p-2 button ${styledata?.Style === 1 ? 'button-primary' : 'button-secondary'}`}>View All</Link>
                             : ""}
                     </div>
                 </div> 

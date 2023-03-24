@@ -76,7 +76,7 @@ const Popularcoupon = ({ data }) => {
                         })}
                     </div>
                     <div className=" text-center my-3">
-                        <Link href='/all-stores' className={`p-2 button  ${data?.Style === 1 ? 'button-primary' : 'button-secondary'}`}>View All</Link>
+                        <Link href='/popular-coupons' className={`p-2 button  ${data?.Style === 1 ? 'button-primary' : 'button-secondary'}`}>View All</Link>
                     </div>
                 </div>
                
