@@ -32,6 +32,12 @@ a {
 .text-header{
   color: var(--header-text) !important;
 }
+.text-footer{
+  color: var(--footer-text) !important;
+}
+.bg-footer{
+  background-color: var(--footer-bg) !important;
+}
 .header-btn-bg{
   background-color: var(--header-btn-bg) !important;
 }
@@ -224,7 +230,7 @@ main[store-style="1"] .button {
   width: 20px;
 }
 
-.navbar-toggler:focus {
+.navbar-toggle {
   box-shadow: none;
 }
 
@@ -264,7 +270,7 @@ main[store-style="1"] .button {
 }
 
 .footer-link a {
-  color: white;
+  color: var(--footer-text);
   margin-left: 7px;
   text-align: center;
   text-transform: uppercase;
@@ -276,9 +282,7 @@ main[store-style="1"] .button {
 .w-40 {
   width: 40% !important;
 }
-.container{
-  min-height: 90vh;
-}
+
 .footer-1{
   /* position: absolute; */
   /* bottom: 0; */
@@ -302,11 +306,18 @@ main[store-style="1"] .button {
   background-color: var(--primary);
   color: white;
 }
-
+/* .dropdown-menu.show {
+  display: none;
+} */
 .pagination {
   --bs-pagination-border-radius: 0 !important;
 }
-
+.favcat{
+ padding: 8px;
+}
+.favcat a{
+  color: black;
+}
 .custom-pag li {
   width: 30px !important;
   margin: 3px !important;

@@ -111,7 +111,7 @@ const Newcoupon = ({ styledata }) => {
         <>
          
                 <div className="container mt-5">
-                    <h3 className='head1 pt-5'>{styledata.Style === 1 ? "Most Tranding Coupons" : "Today's Most Popular Deals"}</h3>
+                    <h3 className='head1 pt-5'>{styledata.Style === 1 ? "Most Trending Coupons" : "Today's Most Popular Deals"}</h3>
                     <div className='row '>
                         {coupon?.data?.data?.map((item) => {
                             return <div className=" col-12 col-sm-6 col-md-3 my-1 p-1">

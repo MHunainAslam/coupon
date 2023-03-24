@@ -71,7 +71,7 @@ const country = () => {
    
     return (
         <>
-            {err ? <p>{err}</p> : 
+            {err ? <p className='text-center my-auto py-5'>{err}</p> : 
             <div className="container my-3">
                 <div className="row">
                     <h2> {slug} Coupons & Promo Codes </h2>

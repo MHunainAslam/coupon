@@ -33,21 +33,23 @@ const category = () => {
     //     "hello"
     // ]
     if (loading) return <div className='bg-white vh-100 vw-100 d-flex justify-content-center overflow-hidden align-items-center position-fixed top-0 start-0 z-1'><Spinner /></div>
-   
+
     return (
         <>
-            {err ? <p>{err}</p> :
-                <div className="container my-3">
-                    <div className="row">
-                        <h2> {slug} Coupons & Promo Codes </h2>
-                        {catcard?.data?.map((item) => {
-                            return <div className="cat-card col-md-4">
-                                <Link href={`/store/${item.slug}`} > <Categorycrad item={item} img={catcard.url} /></Link>
-                            </div>
-                        })}
+            <div className="min-vh-100">
+                {err ? <p className='text-center my-auto py-5'>{err}</p> :
+                    <div className="container my-3">
+                        <div className="row">
+                            <h2> {slug} Coupons & Promo Codes </h2>
+                            {catcard?.data?.map((item) => {
+                                return <div className="cat-card col-md-4">
+                                    <Link href={`/store/${item.slug}`} > <Categorycrad item={item} img={catcard.url} /></Link>
+                                </div>
+                            })}
+                        </div>
                     </div>
-                </div>
-            }
+                }
+            </div>
         </>
     )
 }

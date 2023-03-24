@@ -72,6 +72,9 @@ export default function App({ Component, pageProps }) {
               --header-text: ${data?.header?.color || 'white'} ;
               --header-btn-bg: ${data?.header?.button_color || 'white'} ;
               --header-btn-text: ${data?.header?.button_background || 'black'} ;
+              --footer-bg: ${data?.footer?.background || 'blue'} ;
+              --footer-text: ${data?.footer?.color || 'white'} ;
+              
           }`
         }
       </style>
@@ -82,9 +85,9 @@ export default function App({ Component, pageProps }) {
             <Header1 data={data} /> :
             <Header2 data={data} />
         }
-
+        <div className="min-vh-90">
         <Component {...pageProps} data={data} />
-
+        </div>
         <Toaster
           position="top-right"
         />

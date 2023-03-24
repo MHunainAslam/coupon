@@ -48,34 +48,37 @@ const all_stores = ({ styledata }) => {
     ]
 
     console.log(allstore);
+    if (loading) return <div className='bg-white vh-100 vw-100 d-flex justify-content-center overflow-hidden align-items-center position-fixed top-0 start-0 z-1'><Spinner /></div>
     return (
         <>
-        { err ? "Something Went Wrong" : 
-            <div className="container">
-                <div className="">
-                    <h3 className='ps-0 my-3'>Browse Your Coupon By Store</h3>
-                    <div className='ps-0'>
-                        <Pagination words={words} />
+            <div className="min-vh-100">
+                {err ? "Something Went Wrong" :
+                    <div className="container">
+                        <div className="">
+                            <h3 className='ps-0 my-3'>Browse Your Coupon By Store</h3>
+                            <div className='ps-0'>
+                                <Pagination words={words} />
+
+                            </div>
+                        </div>
+                        <div className="row my-5">
+                            {/* {allstore?.data.data.map((item) => {
+
+                                <StoreItem item={dta} data={styledata} img={allstore?.url} />
+                            })} */}
+                            {words.map(itm => <>
+
+                                <div class="col-12 page-link" id={`${itm}`}>
+                                    <div className='browse-coupon'> {allstore?.data?.filter(item => item?.name?.charAt(0).toLowerCase() === itm.toLowerCase())?.length ? itm : ''}</div>
+                                </div>
+                                {allstore?.data?.filter(item => item?.name?.charAt(0).toLowerCase() === itm.toLowerCase())?.flat()?.map(dta => <StoreItem item={dta} data={styledata} img={allstore?.url} />)}
+                            </>
+                            )}
+                        </div>
 
                     </div>
-                </div>
-                <div className="row my-5">
-                    {/* {allstore?.data.data.map((item)=>{
-
-                <StoreItem item={dta} data={styledata} img={allstore?.url}/>
-                    })} */}
-                    {words.map(itm => <>
-
-                        <div class="col-12 page-link" id={`${itm}`}>
-                            <div className='browse-coupon'> {allstore?.data?.filter(item => item?.name?.charAt(0).toLowerCase() === itm.toLowerCase())?.length ? itm : ''}</div>
-                        </div>
-                        {allstore?.data?.filter(item => item?.name?.charAt(0).toLowerCase() === itm.toLowerCase())?.flat()?.map(dta => <StoreItem item={dta} data={styledata} img={allstore?.url} />)}
-                    </>
-                    )}
-                </div>
-
+                }
             </div>
-}
         </>
     )
 }

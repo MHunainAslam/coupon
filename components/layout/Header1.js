@@ -78,12 +78,12 @@ const Header1 = ({ data }) => {
                             </li>
 
                             <li className="nav-item dropdown">
-                                <Link className="nav-link dropdown-toggle  text-header" href="" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <Link className="nav-link dropdown-toggle  text-header" href="/category">
                                     Category
-                                </Link >
+                                </Link>
                                 <ul className="dropdown-menu rounded-0">
                                     {category?.data?.map((cat) => {
-                                        return <li ><Link className="dropdown-item dropdown-item-hov text-header" href={`/category/${cat.slug}`}>{cat.name}</Link >
+                                        return <li ><Link className="dropdown-item dropdown-item-hov " href={`/category/${cat.slug}`}>{cat.name}</Link >
                                             {/* {category?.data?.map((cat) => {
                                                 return <ul>
                                                     <li>
@@ -135,7 +135,7 @@ const Header1 = ({ data }) => {
                                 </ul>
                             </li>
                             <li className="nav-item dropdown memorial-btn">
-                                <Link href='' className='button button-primary'>Memorial Day</Link >
+                                <Link href={`${data.header.button_url}`} className='button button-primary'>{data.header.button_text}</Link >
                             </li>
 
                         </ul>
