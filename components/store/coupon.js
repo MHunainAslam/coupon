@@ -3,14 +3,14 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import React from 'react'
 
-const horizentalcoupon = ({ coupon, is_ico }) => {
+const horizentalcoupon = ({ coupon, is_ico, img }) => {
     const data = useRouter()
-    console.log(coupon);
+    console.log(img);
     return (
 
         <div className=" bg-white row p-2 my-2 mx-2 coupon ">
             <div className="col-md-2 my-auto ">
-                <Image src={`${coupon?.url || ''}`} fill={true} className='h-auto position-relative' />
+                <Image src={img} fill={true} className='h-auto position-relative' />
             </div>
             <div className="col-md-7">
                 <Link href="#" className={`h5 text-${coupon?.type === 'code' ? 'secondary' : 'primary'}`}>{coupon?.title}</Link>

@@ -116,7 +116,7 @@ const Newcoupon = ({ styledata }) => {
                         {coupon?.data?.data?.map((item) => {
                             return <div className=" col-12 col-sm-6 col-md-3 my-1 p-1">
 
-                                <    item={item} data={styledata} img={coupon?.url} />
+                                <Newcouponcard   item={item} data={styledata} img={coupon?.url} />
                             </div>
                         })}
                     </div>

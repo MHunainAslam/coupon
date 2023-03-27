@@ -139,8 +139,8 @@ const Header1 = ({ data }) => {
                             </li>
 
                         </ul>
-                        <form className="d-flex ms-5" role="search">
-                            <input className="form-control me-2 rounded-0" type="search" placeholder="Search..." aria-label="Search" />
+                        <form className="d-flex mx-auto col-md-3" role="search">
+                            <input className="form-control me-2 rounded-0 " type="search" placeholder="Search..." aria-label="Search" />
                         </form>
                     </div>
                 </div>

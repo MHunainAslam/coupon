@@ -3,30 +3,32 @@ import Image from 'next/image'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
 
-const sidepanel = ({ data }) => {
+const sidepanel = ({ sidepanelapi, img }) => {
 
 
 
     return (
         <>
-            <div className="product-sidepanel p-2">
-                <Image src={`${data?.product?.url || ''}`} fill={true} className='h-auto position-relative' />
-                <h3 className='text-center'>{data?.product?.title}</h3>
-                <p>{data?.product?.desc}</p>
-                <div className='text-center'> <Link href='#' className='button button-secondary'>Go To Store</Link ></div>
+            <div className="product-sidepanelapi p-2">
+                <Image src={`${!img ? '' : img + "/" + sidepanelapi?.data?.store?.logo}`} fill={true} className='h-auto position-relative' />
+                <h4 className='my-2'>{sidepanelapi?.data?.store?.name}</h4>
+                <p >{sidepanelapi?.data?.store?.description}</p>
+                <div className=''> <Link href={`${sidepanelapi?.data?.store?.home_url}`} className='button button-secondary p-2'>Go To Store</Link ></div>
                 <div className="similar-cat">
-                    <h5 className='my-4  text-center'>Similar Category</h5>
-                    {data.similarCategory.map((item) => {
-                        return <div className='similar-cat-link'>
-                            <Link href={item.slug}>{item.title}</Link>
+                    <h5 className='my-4 '>Similar Category</h5>
+                    {/* {sidepanelapi?.data?.category?.map((itema) => { */}
+                         <div className='similar-cat-link'>
+                            <Link href={`${sidepanelapi?.data?.category?.slug}`}>{sidepanelapi?.data?.category?.name}</Link>
+
+                            <h6 className='mt-2'>Find More <strong> {sidepanelapi?.data?.category?.name}</strong> Coupon Codes </h6>
                         </div>
-                    })}
+                    {/* })} */}
                 </div>
                 <div className="similar-store">
-                    <h5 className='mt-5 my-3  text-center'>Similar Store</h5>
-                    {data.similarStore.map((item) => {
+                    <h4 className='mt-5 my-3  '>Similar Store</h4>
+                    {sidepanelapi?.data?.related_store?.data?.map((item) => {
                         return <div className='similar-store-link'>
-                            <Link href={item.slug}>{item.title}</Link>
+                            <Link href={item.slug}>{item.name}</Link>
                         </div>
                     })}
                 </div>
