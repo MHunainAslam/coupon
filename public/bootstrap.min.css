@@ -812,19 +812,19 @@ progress {
         max-width: 960px
     }
 }
-
-@media (min-width:1200px) {
+ 
+@media (min-width: 1200px) {
 
     .container,
     .container-lg,
     .container-md,
     .container-sm,
     .container-xl {
-        max-width: 1140px
+        max-width: 1140px;
     }
 }
 
-@media (min-width:1400px) {
+/* @media (min-width:1400px) {
 
     .container,
     .container-lg,
@@ -834,7 +834,7 @@ progress {
     .container-xxl {
         max-width: 1320px
     }
-}
+} */
 
 .row {
     --bs-gutter-x: 1.5rem;
@@ -8597,6 +8597,7 @@ fieldset:disabled .btn {
 .min-vh-100 {
     min-height: 100vh !important
 }
+
 .min-vh-90 {
     min-height: 90vh !important
 }

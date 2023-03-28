@@ -1,9 +1,11 @@
+import { APP_KEY, APP_URL } from '@/config'
 import Image from 'next/image'
 import React, { useEffect, useState } from 'react'
+import { toast } from 'react-hot-toast'
 import Coupon from './coupon'
 import Expire from './expire'
 
-const detail = ({ storedetailapi, data, coupon, expire, img }) => {
+const detail = ({ storedetailapi, img }) => {
 
     // if (storedetailapi.data?.coupon) {
     //     let GivenDate = new Date(data.coupon.expiry_date.split(" ")[0].replace(/-/g, "/"))
@@ -46,11 +48,43 @@ const detail = ({ storedetailapi, data, coupon, expire, img }) => {
     // }, [])
 
 
-    console.log(storedetailapi?.data?.coupon, expir, stor);
+
+    const [isLoading, setIsLoading] = useState(false);
+
+    const handleContact = (e) => {
+        e.preventDefault();
+
+        setIsLoading(true);
+
+        let email = e.target.elements['email'].value;
+
+        fetch(`${APP_URL}api/subscribe`, {
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            method: 'POST',
+            body: JSON.stringify({ email, key: APP_KEY })
+        }).then(res => res.json()).then((data) => {
+            if (data.success) {
+                toast.success(data.message);
+            } else {
+                toast.error(data.message);
+            }
+            setIsLoading(false);
+        }).catch(err => {
+            console.error(err);
+            toast.error('Something went wrong!')
+            setIsLoading(false);
+        });
+    }
+
+
     return (
         <div className="product-detail">
             {/* {stor
                 && <> */}
+
+
             <h2 className='ms-3'> {storedetailapi?.data?.store.name} Coupons & Promo Codes</h2>
             <div className="col-12 ">
                 {storedetailapi?.data?.coupon?.map((item) => {
@@ -62,11 +96,33 @@ const detail = ({ storedetailapi, data, coupon, expire, img }) => {
                 }
                 )}
             </div>
+            <div className="col-12 px-3">
+                <div class="row mx-auto my-3" id="email-alert-signup">
+                    <div class="col-md-5 py-3 pe-0">
+                        <h3 className='fs-5 text-white mb-0'>Get latest <em class="text-capitalize">{storedetailapi?.data?.store.name} Coupon</em> &amp; deals alert. <br /> <a href="#" class="privacy fs-6 text-white">Privacy Policy</a></h3>
+                    </div>
+                    <div class="col-md-7" yth="">
+
+                        <form class="search ajax-form search-alert-signup py-3 d-flex w-100 h-100" onSubmit={handleContact}>
+                            <div class="text-field-holder w-80">
+                                <input id="email_" type="email" name="email" placeholder="Email Address" className='w-100 h-100 px-3' />
+                            </div>
+                            <button type="submit" class=" text-white button button-primary ms-3" name="newsletter">
+
+                                {isLoading ? 'Subscribing...' : 'Go'}
+
+                            </button>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
             {/* </>
             }
+            
             {expir
                 && <> */}
-            <h2 className='text-start ps-3 mb-0 mt-3'>Expired</h2>
+            <h2 className='text-start ps-3 mb-0 mt-3'>Expired {storedetailapi?.data?.store.name} Coupons & Promo Codes</h2>
             <div className="text-expired">
                 {storedetailapi?.data?.coupon?.map((item) => {
 
