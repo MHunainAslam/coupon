@@ -29,8 +29,7 @@ const Popular = ({ styledata }) => {
             // setLoading(false);
             setError(true);
         })
-    }, [])
-    console.log("popular  ", stores);
+    }, [])  
     // popular?.map(item => {
     //     console.log(x + '/' + item.media);
     // })

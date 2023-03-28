@@ -2,29 +2,30 @@ import React, { useEffect, useState } from 'react'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
-import Sidepanel from '/components/store/sidepanel'
+import Sidepanel from '@/components/store/sidepanel'
 import Detail from '@/components/store/detail'
 import { APP_KEY, APP_URL } from '@/config'
 import { toast } from 'react-hot-toast'
 
-
 const Storedetail = () => {
 
-    const [singlestore, setsinglestore] = useState({})
+    const [singlestore, setsinglestore] = useState({});
     const [err, setError] = useState(false);
-    const [loding, setloding] = useState(true)
+    const [loding, setloding] = useState(true);
 
     useEffect(() => {
         fetch(`${APP_URL}api/single-store/${slug}?key=${APP_KEY}`).then(res => res.json()).then((dta) => {
-            setsinglestore(dta)
+            setsinglestore(dta);
             // toast.success('Slider fetch successfully!');
             // setLoading(false);
         }).catch(err => {
             // toast.error('Something went wrong!');
             // setLoading(false);
             setError(true);
-        })
-    }, [])
+        });
+    }, []);
+
+
 
     // const coupon = [
     //     {
@@ -46,6 +47,7 @@ const Storedetail = () => {
     //         coupon_id:322
     //     }
     // ]
+
     const expire = [
         {
             type: 'code',
@@ -107,7 +109,6 @@ const Storedetail = () => {
             },
         ]
     }
-    console.log(data.slug);
 
     const dta = useRouter()
     let slug = dta?.query?.slug;
@@ -120,7 +121,7 @@ const Storedetail = () => {
                     <Sidepanel sidepanelapi={singlestore} img={singlestore.url} />
                 </div>
                 <div className="col-md-9 col-12 my-5 px-2">
-                    <Detail storedetailapi={singlestore} img={singlestore.url}  expire={expire} />
+                    <Detail storedetailapi={singlestore} img={singlestore.url} expire={expire} />
                 </div>
 
 

@@ -8,7 +8,7 @@ const slug = () => {
 
     return (
         <div>
-            <Storedetail /> 
+            <Storedetail />
         </div>
     )
 }

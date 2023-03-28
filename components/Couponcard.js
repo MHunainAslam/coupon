@@ -5,8 +5,7 @@ import React, { useState } from 'react'
 
 const Couponcard = ({ data, item, img }) => {
 
-
-    console.log(img + "/" + item.store_logo);
+ 
     return (
         <>
             {data.Style === 1 ?

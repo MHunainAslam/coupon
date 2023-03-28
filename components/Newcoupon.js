@@ -24,8 +24,7 @@ const Newcoupon = ({ styledata }) => {
             // setLoading(false);
             setError(true);
         })
-    }, [])
-    console.log("aaa", coupon?.url);
+    }, []) 
     // const images = [
     //     {
     //         url: "https://morecouponcode.com/adminpanel/assets/images/store/ashimary%20Hair%20Coupon%20Logo.png",

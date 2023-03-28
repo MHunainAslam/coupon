@@ -1,7 +1,6 @@
 import { Html, Head, Main, NextScript } from 'next/document'
 
-export default function Document({ themeData }) {
-  console.log(themeData);
+export default function Document({ themeData }) { 
   return (
     <Html lang="en">
       <Head />
