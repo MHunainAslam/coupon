@@ -1,5 +1,6 @@
 import { APP_KEY, APP_URL } from '@/config'
 import Image from 'next/image'
+import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
 import Coupon from './coupon'
 import Expire from './expire'
@@ -92,10 +93,10 @@ const detail = ({ storedetailapi, img }) => {
                 }
                 )}
             </div>
-            <div className="col-12 px-3">
+            <div className="col-12 px-2">
                 <div class="row mx-auto my-3" id="email-alert-signup">
                     <div class="col-md-5 py-3 pe-0">
-                        <h3 className='fs-5 text-white mb-0'>Get latest <em class="text-capitalize">{storedetailapi?.data?.store.name} Coupon</em> &amp; deals alert. <br /> <a href="#" class="privacy fs-6 text-white">Privacy Policy</a></h3>
+                        <h3 className='fs-5 text-white mb-0'>Get latest <em class="text-capitalize">{storedetailapi?.data?.store.name} Coupon</em> &amp; deals alert.  <Link href=" /footerpage/ " class="privacy fs-6 text-white">Privacy Policy</Link></h3>
                     </div>
                     <div class="col-md-7" yth="">
 

@@ -34,7 +34,7 @@ const Storedetail = () => {
 
             <div className="container">
                 <div className='row'>
-                    <div className="col-md-3 col-12 bg-white my-5">
+                    <div className="col-md-3 col-12  my-5 h-100">
                         <Sidepanel sidepanelapi={singlestore} img={singlestore.url} />
                     </div>
                     <div className="col-md-9 col-12 my-5 px-2">
