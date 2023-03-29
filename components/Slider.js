@@ -5,7 +5,6 @@ import img2 from '../public/assets/slider/Memoria-Day-Sale-morecouponcode.png'
 import memorialslider from '../public/assets/slider/Happy-Memorial Day-couponive.png'
 import Spinner from './Spinner'
 import { APP_URL, APP_KEY } from '@/config'
-import { toast } from 'react-hot-toast'
 
 
 const Slider = ({ data }) => {
@@ -23,11 +22,9 @@ const Slider = ({ data }) => {
 
         fetch(`${APP_URL}api/slider?key=${APP_KEY}`).then(res => res.json()).then((slider) => {
             setSlider(slider.data)
-            // toast.success('Slider fetch successfully!');
             setLoading(false);
             setImg(slider.url)
         }).catch(err => {
-            toast.error('Something went wrong!');
             setLoading(false);
             setError(true);
         })

@@ -20,8 +20,8 @@ const Footer1 = ({data}) => {
               <Link href="">About US</Link>
               <Link href="">privacy policy</Link>
               <Link href="">terms & condition</Link>
-              <Link href="">stores</Link>
-              <Link href="">Categories</Link>
+              <Link href="/all-stores">stores</Link>
+              <Link href="/category">Categories</Link>
               <Link href=""><i class="fab fa-twitter" aria-hidden="true"></i></Link>
               <Link href=""><i class="fab fa-pinterest" aria-hidden="true"></i></Link>
               <Link href=""><i class="fab fa-facebook" aria-hidden="true"></i></Link>

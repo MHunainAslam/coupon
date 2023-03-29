@@ -13,10 +13,8 @@ const categories = () => {
     useEffect(() => {
         fetch(`${APP_URL}api/category?key=${APP_KEY}&paginate=12`).then(res => res.json()).then((favcatdata) => {
             setfavcat(favcatdata)
-            // toast.success('Slider fetch successfully!');
             setloading(false);
         }).catch(err => {
-            // toast.error('Something went wrong!');
             setloading(false);
             setError(true);
         })

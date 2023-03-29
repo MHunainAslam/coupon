@@ -4,7 +4,6 @@ import Link from 'next/link'
 import StoreItem from '../components/StoreItem'
 import Pagination from '../components/layout/Pagnation'
 import React, { useEffect, useState } from 'react'
-import { toast } from 'react-hot-toast'
 import { APP_URL, APP_KEY } from '@/config'
 import Spinner from '@/components/Spinner'
 
@@ -18,10 +17,8 @@ const all_stores = ({ styledata }) => {
     useEffect(() => {
         fetch(`${APP_URL}api/store?key=${APP_KEY}&type=featured`).then(res => res.json()).then((storedata) => {
             setallstore(storedata)
-            // toast.success('Slider fetch successfully!');
             setloading(false);
         }).catch(err => {
-            toast.error('Something went wrong!');
             setloading(false);
             setError(true);
         })

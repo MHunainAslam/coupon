@@ -20,25 +20,16 @@ const Header1 = ({ data }) => {
         }).catch(err => {
             setError(true);
         })
-    }, [])
-
-
-    useEffect(() => {
         fetch(`${APP_URL}api/coupon_type?key=${APP_KEY}`).then(res => res.json()).then((dta) => {
             setcoupons(dta)
         }).catch(err => {
             setError(true);
         })
-    }, [])
-    
-    useEffect(() => {
         fetch(`${APP_URL}api/season?key=${APP_KEY}&paginate=10`).then(res => res.json()).then((dta) => {
             setseason(dta)
         }).catch(err => {
             setError(true);
         })
-    }, [])
-    useEffect(() => {
         fetch(`${APP_URL}api/country?key=${APP_KEY}`).then(res => res.json()).then((dta) => {
             setcountry(dta)
         }).catch(err => {
@@ -58,8 +49,42 @@ const Header1 = ({ data }) => {
     // const country = [
     //     'United State ', 'United Kingdom', 'Canada'
     // ]
-    // console.log(data);
+    // console.log(data); 
 
+
+
+    const [searchQuery, setSearchQuery] = useState([]);
+    const [isActive, setIsActive] = useState(false);
+    const [query, setQuery] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
+
+    const handleSearch = (e) => {
+
+        setQuery(e);
+
+        if (e.length > 1) {
+
+            setIsActive(true);
+            setIsLoading(true);
+            fetch(`${APP_URL}api/store?key=${APP_KEY}&search=${e}`).then(res => res.json()).then(results => {
+
+                let query = [];
+
+                results?.data?.map(item => query.push({ name: item.name, slug: item.slug }))
+
+                setIsLoading(false);
+
+                setSearchQuery(query)
+
+            })
+        }
+        else {
+            setIsLoading(false);
+            setIsActive(false);
+            setSearchQuery([])
+        }
+    }
+    
     return (
         <>
 
@@ -84,13 +109,6 @@ const Header1 = ({ data }) => {
                                 <ul className="dropdown-menu rounded-0">
                                     {category?.data?.map((cat) => {
                                         return <li ><Link className="dropdown-item dropdown-item-hov " href={`/category/${cat.slug}`}>{cat.name}</Link >
-                                            {/* {category?.data?.map((cat) => {
-                                                return <ul>
-                                                    <li>
-                                                        {cat.name}
-                                                    </li>
-                                                </ul>
-                                            })} */}
                                         </li>
                                     })}
                                 </ul>
@@ -139,8 +157,28 @@ const Header1 = ({ data }) => {
                             </li>
 
                         </ul>
-                        <form className="d-flex mx-auto col-md-3" role="search">
-                            <input className="form-control me-2 rounded-0 " type="search" placeholder="Search..." aria-label="Search" />
+                        <form className="d-flex mx-auto position-relative col-md-3 flex-column" role="search">
+                            <input className="form-control me-2 rounded-0 " type="search" placeholder="Search..." aria-label="Search" onChange={(e) => handleSearch(e.target.value)} />
+                            <div class="w-100 top-100 pl-0 position-absolute header-search">
+                                {
+                                    isActive &&
+
+                                        isLoading ?
+
+                                        <div class="list-group" ><a class="list-group-item list-group-item-action rounded-0">Loading...</a></div>
+
+                                        :
+
+                                        searchQuery.length ?
+                                            searchQuery.map(item => {
+                                                return <div class="list-group" ><Link href={`/store/${item.slug}`} class="list-group-item list-group-item-action rounded-0">{item.name}</Link></div>
+                                            })
+
+                                            :
+
+                                            query.length ? <div class="list-group" ><a class="list-group-item list-group-item-action rounded-0">No Result Found</a></div> : ''
+                                }
+                            </div>
                         </form>
                     </div>
                 </div>

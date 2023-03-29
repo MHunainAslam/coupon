@@ -21,7 +21,7 @@ const Couponcard = ({ data, item, img }) => {
                         <Link href={`/store/${item.store_slug}`} className='text-black new-coupon-title'>{item.store_name}</Link>
                         <div>
                             {/* {item.url} */}
-                            <Link href="www.google.com" onClick={() => { window.open(`/store/${item.store_slug}/${item.id}`) }} className={`coupon-btn py-1 px-md-5 px-2 mt-1  button button-${item.type === 'Coupon Code' ? 'secondary' : 'primary'}`}  >
+                            <Link href={`${item.url}`} onClick={() => { window.open(`/store/${item.store_slug}/${item.id}`) }} className={`coupon-btn py-1 px-md-5 px-2 mt-1  button button-${item.type === 'Coupon Code' ? 'secondary' : 'primary'}`}  >
                                 {item.type === 'Coupon Code' ? 'Show Code' : 'Show Deal'}
                             </Link>
 
@@ -37,7 +37,8 @@ const Couponcard = ({ data, item, img }) => {
                 // ${item.type === 'topdeal' ? 'top-deal' : ''}
                 <div class={`card position-relative border-0 h-100  `}>
                     <div className="img-overlay  ">
-                        <Image src={item.url} class="card-img-top w-100 position-relative" fill={100} alt="..." />
+                    <Image src={`${!img ? '' : img + "/" + item?.store_logo}`} alt={item.store_name} fill={true} className='w-100 position-relative p-4'></Image>
+
                     </div>
                     <div class="card-body">
                         <Link href={`all-stores/`}> <h5 class="card-title text-primary fw-bold">{item.title}</h5></Link>

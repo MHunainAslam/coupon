@@ -2,7 +2,6 @@ import { APP_URL, APP_KEY } from '@/config'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import React, { useEffect, useState } from 'react'
-import { toast } from 'react-hot-toast'
 import Couponcard from './Couponcard'
 import Spinner from './Spinner'
 
@@ -15,10 +14,8 @@ const Popularcoupon = ({ data }) => {
     useEffect(() => {
         fetch(`${APP_URL}api/coupon?key=${APP_KEY}&graph=popular&paginate=16`).then(res => res.json()).then((dta) => {
             setCoupon(dta)
-            // toast.success('Slider fetch successfully!');
             setLoading(false);
         }).catch(err => {
-            toast.error('Something went wrong!');
             setLoading(false);
             setError(true);
         })

@@ -4,7 +4,6 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Couponcard from './Couponcard';
 import { APP_URL, APP_KEY } from '@/config';
-import { toast } from 'react-hot-toast';
 import Spinner from './Spinner';
 const Couponslider = ({ styledata }) => {
 
@@ -16,10 +15,8 @@ const Couponslider = ({ styledata }) => {
     useEffect(() => {
         fetch(`${APP_URL}api/coupon?key=${APP_KEY}&ttype=coupon-type(slug)&paginate=20`).then(res => res.json()).then((dta) => {
             setmostview(dta)
-            // toast.success('Slider fetch successfully!');
             setloading(false);
         }).catch(err => {
-            toast.error('Something went wrong!');
             setloading(false);
             setError(true);
         })

@@ -40,7 +40,7 @@ const category = () => {
                 {err ? <p className='text-center my-auto py-5'>{err}</p> :
                     <div className="container my-3">
                         <div className="row">
-                            <h2> {slug} Coupons & Promo Codes </h2>
+                            <h2> {catcard.name} Coupons & Promo Codes </h2>
                             {catcard?.data?.map((item) => {
                                 return <div className="cat-card col-md-4">
                                     <Link href={`/store/${item.slug}`} > <Categorycrad item={item} img={catcard.url} /></Link>

@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import React, { useState } from 'react'
 
-const modal = () => {
+const modal = ({ popup, store }) => {
     const data = {
         modal: {
             brand: 'first',
@@ -16,15 +16,15 @@ const modal = () => {
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header bg-light">
-                        <h3 class="modal-title fs-5" id="exampleModalLiveLabel">More {data.modal.brand} coupon</h3>
+                        <h3 class="modal-title fs-5" id="exampleModalLiveLabel">More {store} coupon</h3>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onClick={() => setIsOpen(!isOpen)}></button>
                     </div>
                     <div class="modal-body">
-                        <Link className='h5 text-secondary' href="#">{data.modal.title}</Link>
-                        <p className='pb-4'>{data.modal.getoff}</p>
+                        <Link className='h5 text-secondary' href="#">{popup.title}</Link>
+                        <p className='tr-2 my-1' dangerouslySetInnerHTML={{ __html: popup.description }}></p>
                         <div className='text-center mt-3'>
-                            <small className={`p-2 m-5  ${data.modal.code ? 'bg-code  h3' : ''}`}>{data.modal.code || 'No Coupon Needed'}</small> <br />
-                            <Link href="#" className='button button-secondary my-4' onClick={() => navigator.clipboard.writeText(`${data.modal.code}`)}>{data.modal.code ? `Copy and Go To the ${data.modal.brand}` : `Go To the ${data.modal.brand}`}</Link>
+                            <small className={`p-2 m-5  ${popup.code ? 'bg-code  h3' : ''}`}>{popup.code || 'No Coupon Needed'}</small> <br />
+                            <Link href={`${popup.url}`} className='button button-secondary my-4' onClick={() => navigator.clipboard.writeText(`${popup.code}`)}>{popup.code ? `Copy and Go To the ${store}` : `Go To the ${store}`}</Link>
                         </div>
                     </div>
                     <div class=" text-center">

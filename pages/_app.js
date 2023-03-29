@@ -11,6 +11,7 @@ import dynamic from 'next/dynamic'
 import { useEffect, useState } from 'react'
 import { APP_URL, APP_KEY } from '@/config'
 import Spinner from '@/components/Spinner'
+import { toast } from 'react-hot-toast'
 
 const Toaster = dynamic(
   () => import("react-hot-toast").then((c) => c.Toaster),

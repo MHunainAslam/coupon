@@ -13,10 +13,8 @@ const popularcoupons = ({data}) => {
     useEffect(() => {
         fetch(`${APP_URL}api/coupon?key=${APP_KEY}&graph=popular`).then(res => res.json()).then((dta) => {
             setpopular(dta)
-            // toast.success('Slider fetch successfully!');
             setloading(false);
         }).catch(err => {
-            // toast.error('Something went wrong!');
             setloading(false);
             setError(true);
         })

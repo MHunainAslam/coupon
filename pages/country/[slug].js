@@ -71,18 +71,19 @@ const country = () => {
    
     return (
         <>
-            {err ? <p className='text-center my-auto py-5'>{err}</p> : 
+         
             <div className="container my-3">
+            {err ? <p className='text-center my-auto py-5'>{err}</p> : 
                 <div className="row">
-                    <h2> {slug} Coupons & Promo Codes </h2>
+                    <h2> {countrycard.name} Coupons & Promo Codes </h2>
                     {countrycard?.data?.map((item) => {
                         return <div className="cat-card col-md-4">
                             <Link href={`/store/${item.slug}`} > <Categorycrad item={item} img={countrycard.url} /></Link>
                         </div>
                     }) }
                 </div>
+                }
             </div>
-            }
         </>
     )
 }
