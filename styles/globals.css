@@ -500,7 +500,9 @@ main[store-style="2"] .dropdown-item-hov:hover {
   padding-inline: 10px;
   top: 10px;
 }
-
+.h-85-px{
+  height: 85px;
+}
 .show-code-2 {
   border: 1px dashed var(--primary);
 }

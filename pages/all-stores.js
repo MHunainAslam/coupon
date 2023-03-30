@@ -7,7 +7,7 @@ import React, { useEffect, useState } from 'react'
 import { APP_URL, APP_KEY } from '@/config'
 import Spinner from '@/components/Spinner'
 
-const all_stores = ({ styledata }) => {
+const all_stores = ({ data }) => {
 
 
     const [allstore, setallstore] = useState({})
@@ -44,6 +44,7 @@ const all_stores = ({ styledata }) => {
         'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'
     ]
     if (loading) return <div className='bg-white vh-100 vw-100 d-flex justify-content-center overflow-hidden align-items-center position-fixed top-0 start-0 z-1'><Spinner /></div>
+    console.log(data);
     return (
         <>
             <div className="min-vh-100">
@@ -66,7 +67,7 @@ const all_stores = ({ styledata }) => {
                                 <div class="col-12 page-link" id={`${itm}`}>
                                     <div className='browse-coupon'> {allstore?.data?.filter(item => item?.name?.charAt(0).toLowerCase() === itm.toLowerCase())?.length ? itm : ''}</div>
                                 </div>
-                                {allstore?.data?.filter(item => item?.name?.charAt(0).toLowerCase() === itm.toLowerCase())?.flat()?.map(dta => <StoreItem cols={true} item={dta} data={styledata} img={allstore?.url} />)}
+                                {allstore?.data?.filter(item => item?.name?.charAt(0).toLowerCase() === itm.toLowerCase())?.flat()?.map(dta => <StoreItem cols={true} head={true} item={dta} styledata={data} img={allstore?.url} />)}
                             </>
                             )}
                         </div>

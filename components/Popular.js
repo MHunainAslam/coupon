@@ -15,10 +15,10 @@ const Popular = ({ styledata }) => {
     const [err, setError] = useState(false);
     const [stores, setStores] = useState([]);
     const [img, setImg] = useState('');
-
+ 
     useEffect(() => {
-        fetch(`${APP_URL}api/store?key=${APP_KEY}&graph=popular${styledata === 1 ? '&paginate=28' : ''}`).then(res => res.json()).then((stores) => {
-            setStores(styledata === 1 ? stores?.data : stores);
+        fetch(`${APP_URL}api/store?key=${APP_KEY}&graph=popular${styledata.Style === 1 ? '&paginate=28' : ''}`).then(res => res.json()).then((stores) => {
+            setStores(styledata.Style === 1 ? stores?.data : stores);
             setImg(stores?.url);
             setLoading(false);
             console.log(stores);
