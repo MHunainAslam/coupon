@@ -1,6 +1,43 @@
-import React from 'react'
+import { APP_KEY, APP_URL } from '@/config'
+import React, { useState } from 'react'
+import { toast } from 'react-hot-toast'
 
 const Subscribe = ({ }) => {
+    const [isData, setIsData] = useState({ store: false, expire: false })
+    const [expir, setExpir] = useState(false)
+    const [stor, setStor] = useState(false)
+
+    const [isLoading, setIsLoading] = useState(false);
+
+    const handleContact = (e) => {
+        e.preventDefault();
+
+        setIsLoading(true);
+
+        let email = e.target.elements['email'].value;
+
+        fetch(`${APP_URL}api/subscribe`, {
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            method: 'POST',
+            body: JSON.stringify({ email, key: APP_KEY })
+        }).then(res => res.json()).then((data) => {
+            if (data.success) {
+                 toast.success(data.message)
+                 maill.reset()
+            } else {
+                 toast.error(data.message)
+            }
+            setIsLoading(false);
+        }).catch(err => {
+            console.error(err);
+            setIsLoading(false);
+            toast.error('Something went wrong!')
+        });
+    }
+
+
     return (
         <>
             <div class="m-md-5 my-5 m-4">
@@ -8,10 +45,11 @@ const Subscribe = ({ }) => {
                     <h1 class="subscribe-head text-md-start ">Best Deals From Top Stores.</h1>
                     <h3 class="mt-1 text-md-start fw-normal">Helping Customers Save Million Dollars</h3>
                     <p class="mt-2 text-md-start">Get latest disocunts from top brands Instantly</p>
-                    <form action="" class="px-0 my-3 subscribe-form input-group " role="form" method="POST">
-                        <div class="input-group mb-3 h-50px w-100">
-                            <input type="text" class="form-control col-9 border-0" placeholder="Email Address" aria-label="Recipient's username" aria-describedby="button-addon2" />
-                            <button class="btn button-secondary  bg-secondary text-uppercase text-white col-3 fw-bolder" type="button" id="button-addon2">Subscribe</button>
+                   
+                    <form class="px-0 my-3 subscribe-form input-group " id='maill' onSubmit={handleContact}>
+                        <div class="input-group mb-3 h-100 w-100">
+                            <input class="form-control col-9 border-0" id="email_" type="email" name="email" placeholder="Email Address"/>
+                            <button class="btn button-secondary  bg-secondary text-uppercase text-white col-3 fw-bolder" type="submit" name="newsletter">{isLoading ? 'Subscribing...' : 'Suscribe'}</button>
                         </div>
                     </form>
                 </div>

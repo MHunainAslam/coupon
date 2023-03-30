@@ -12,8 +12,8 @@ const Popularcoupon = ({ data }) => {
     const [loding, setLoading] = useState(true)
 
     useEffect(() => {
-        fetch(`${APP_URL}api/coupon?key=${APP_KEY}&graph=popular&paginate=16`).then(res => res.json()).then((dta) => {
-            setCoupon(dta)
+        fetch(`${APP_URL}api/coupon?key=${APP_KEY}&graph=popular${data === 1 ? '&paginate=16' : ''} `).then(res => res.json()).then((dta) => {
+            setCoupon(data === 1 ? dta?.data : dta)
             setLoading(false);
         }).catch(err => {
             setLoading(false);
@@ -66,15 +66,18 @@ const Popularcoupon = ({ data }) => {
                 <div className="container mt-5">
                     <h3 className='head1 pt-5'>Most Popular Coupons</h3>
                     <div className='row '>
-                        {coupon?.data?.data?.map((item) => {
+                        {coupon?.data?.map((item) => {
                             return <div className="col-12 col-sm-6 col-md-3 my-1 p-1">
                                 <Couponcard item={item} data={data} img={coupon.url}/>
                             </div>
                         })}
                     </div>
+                    {data === 1 ? 
                     <div className=" text-center my-3">
                         <Link href='/popular-coupons' className={`p-2 button  ${data?.Style === 1 ? 'button-primary' : 'button-secondary'}`}>View All</Link>
                     </div>
+                    :''
+}
                 </div>
                
         </>

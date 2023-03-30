@@ -5,7 +5,7 @@ import React, { useState } from 'react'
 
 const Couponcard = ({ data, item, img }) => {
 
- 
+ console.log(item);
     return (
         <>
             {data.Style === 1 ?
@@ -51,13 +51,13 @@ const Couponcard = ({ data, item, img }) => {
                             <Link href="" className='button button-secondary w-100 rounded-1 px-1 py-2'>Show Deal</Link>
                             : <div>
                                 <div className="show-code-2 position-relative">
-                                    <h4 className='w-100 text-center'>{item.code}</h4>
+                                    <h4 className='w-100 text-center overflow-hidden'>{item.code}</h4>
                                     <Link href="" className='button button-primary px-1 rounded-1 py-2'></Link>
                                 </div>
 
                             </div>
                         }
-                        <p className='text-expired my-auto'> used {item.usetime} times</p>
+                        {/* <p className='text-expired my-auto'> used {item.store} times</p> */}
                     </div>
                 </div>
 

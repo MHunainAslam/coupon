@@ -42,7 +42,7 @@ const all_stores = ({ styledata }) => {
 
     const words = [
         'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'
-    ] 
+    ]
     if (loading) return <div className='bg-white vh-100 vw-100 d-flex justify-content-center overflow-hidden align-items-center position-fixed top-0 start-0 z-1'><Spinner /></div>
     return (
         <>
@@ -66,7 +66,7 @@ const all_stores = ({ styledata }) => {
                                 <div class="col-12 page-link" id={`${itm}`}>
                                     <div className='browse-coupon'> {allstore?.data?.filter(item => item?.name?.charAt(0).toLowerCase() === itm.toLowerCase())?.length ? itm : ''}</div>
                                 </div>
-                                {allstore?.data?.filter(item => item?.name?.charAt(0).toLowerCase() === itm.toLowerCase())?.flat()?.map(dta => <StoreItem item={dta} data={styledata} img={allstore?.url} />)}
+                                {allstore?.data?.filter(item => item?.name?.charAt(0).toLowerCase() === itm.toLowerCase())?.flat()?.map(dta => <StoreItem cols={true} item={dta} data={styledata} img={allstore?.url} />)}
                             </>
                             )}
                         </div>

@@ -44,7 +44,7 @@ a {
   border-right: 5px solid transparent;
   border-bottom: 6px solid var(--secondary);
   position: absolute;
-  margin: -15px 0px 0px 60px;
+  margin: -15px 0px 0px 60px ;
 }
 .side-img {
   height: 95px;
@@ -370,10 +370,6 @@ main[store-style="1"] .button {
   width: 40% !important;
 }
 
-.footer-1 {
-  /* position: absolute; */
-  /* bottom: 0; */
-}
 
 .footer1-logo {
   aspect-ratio: 1/0.3;
@@ -393,6 +389,11 @@ main[store-style="1"] .button {
 .dropdown-item-hov:focus,
 .dropdown-item-hov:hover {
   background-color: var(--primary);
+  color: white;
+}
+main[store-style="2"] .dropdown-item-hov:focus,
+main[store-style="2"] .dropdown-item-hov:hover {
+  background-color: var(--secondary);
   color: white;
 }
 

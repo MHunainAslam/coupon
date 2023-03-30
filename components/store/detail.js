@@ -23,11 +23,6 @@ const detail = ({ storedetailapi, img }) => {
     //     }
     // }
 
-    const [isData, setIsData] = useState({ store: false, expire: false })
-    const [expir, setExpir] = useState(false)
-    const [stor, setStor] = useState(false)
-
-
     // useEffect(() => {
     // if (storedetailapi?.data) {
 
@@ -48,7 +43,9 @@ const detail = ({ storedetailapi, img }) => {
     // }
     // }, [])
 
-
+    const [isData, setIsData] = useState({ store: false, expire: false })
+    const [expir, setExpir] = useState(false)
+    const [stor, setStor] = useState(false)
 
     const [isLoading, setIsLoading] = useState(false);
 

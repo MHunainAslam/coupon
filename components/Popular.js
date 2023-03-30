@@ -14,24 +14,25 @@ const Popular = ({ styledata }) => {
     const [loading, setLoading] = useState(true);
     const [err, setError] = useState(false);
     const [stores, setStores] = useState([]);
-    // const [img, setImg] = useState('');
+    const [img, setImg] = useState('');
 
     useEffect(() => {
-
-        fetch(`${APP_URL}api/store?key=${APP_KEY}&graph=popular&paginate=28`).then(res => res.json()).then((stores) => {
-            setStores(stores)
+        fetch(`${APP_URL}api/store?key=${APP_KEY}&graph=popular${styledata === 1 ? '&paginate=28' : ''}`).then(res => res.json()).then((stores) => {
+            setStores(styledata === 1 ? stores?.data : stores);
+            setImg(stores?.url);
             setLoading(false);
+            console.log(stores);
             // setImg(popular.url)
         }).catch(err => {
             // setLoading(false);
             setError(true);
         })
-    }, [])  
+    }, [])
     // popular?.map(item => {
     //     console.log(x + '/' + item.media);
     // })
 
-    
+
     return (
         <>
             <div className="container pt-5">
@@ -39,8 +40,8 @@ const Popular = ({ styledata }) => {
                     {styledata.Style === 1 ? " Most Popular Stores" : "Your Most Favorite Stores"}
                 </h3>
                 <div className="row">
-                    {stores?.data?.data?.map((item) => {
-                        return <StoreItem item={item} img={stores?.url} data={styledata} />
+                    {stores?.data?.map((item) => {
+                        return <StoreItem item={item} img={img} data={styledata} />
                     })}
                 </div>
                 {styledata.Style === 1 ?
@@ -50,9 +51,9 @@ const Popular = ({ styledata }) => {
                     :
                     ''}
             </div>
-            
+
         </>
-             
+
     )
 }
 

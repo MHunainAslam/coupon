@@ -5,8 +5,9 @@ import { useRouter } from 'next/router'
 import Link from 'next/link'
 import Sidepanel from '@/components/store/sidepanel'
 import Detail from '@/components/store/detail'
-import { APP_KEY, APP_URL } from '@/config'
+import { APP_KEY, APP_URL, DEFAULT_DESC } from '@/config'
 import Spinner from '@/components/Spinner'
+import Layout from './Layout';
 
 const Storedetail = () => {
 
@@ -30,7 +31,8 @@ const Storedetail = () => {
     if (loading) return <div className='bg-white vh-100 vw-100 d-flex justify-content-center overflow-hidden align-items-center position-fixed top-0 start-0 z-1'><Spinner /></div>
 
     return (
-        <>
+
+        <Layout title={`${singlestore?.data?.store?.name || DEFAULT_TITLE}`} metaDescription={`${singlestore?.data?.store?.seo_description || DEFAULT_DESC}`} metaKeywords={`${singlestore?.data?.store?.meta_key}`} metaTitle={`${singlestore?.data?.store?.seo_title}`}>
 
             <div className="container">
                 <div className='row'>
@@ -44,7 +46,7 @@ const Storedetail = () => {
             </div>
             {dta.query.couponmodal &&
                 <Modal popup={singlestore?.data?.popup_coupon} store={singlestore?.data?.store?.name} />}
-        </>
+        </Layout>
     )
 }
 
