@@ -79,7 +79,7 @@ export default function App({ Component, pageProps }) {
           }`
         }
       </style>
-      
+
       <Layout title="Home - " metaTitle="" metaDescription="A" logo="" themeData={data}>
         {
           data.Style === 1 ?
@@ -87,7 +87,7 @@ export default function App({ Component, pageProps }) {
             <Header2 data={data} />
         }
         <div className="min-vh-90">
-        <Component {...pageProps} data={data} />
+          <Component {...pageProps} data={data} />
         </div>
         <Toaster
           position="top-right"
@@ -98,9 +98,9 @@ export default function App({ Component, pageProps }) {
             <Footer2 data={data} />
         }
       </Layout>
-      
+
     </>
-    
+
   }
 
 }

@@ -1,11 +1,12 @@
 import Categorycrad from '@/components/Categorycard'
+import Favoritebrands from '@/components/Favoritebrands'
 import Spinner from '@/components/Spinner'
 import { APP_KEY, APP_URL } from '@/config'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import React, { useEffect, useState } from 'react'
 
-const category = () => {
+const category = ({ data }) => {
 
     const dta = useRouter()
     let slug = dta?.query?.slug;
@@ -29,6 +30,7 @@ const category = () => {
             setloading(false)
         })
     }, [slug])
+ 
     // const catcard = [
     //     "hello"
     // ]
@@ -40,7 +42,7 @@ const category = () => {
                 {err ? <p className='text-center my-auto py-5'>{err}</p> :
                     <div className="container my-3">
                         <div className="row">
-                            <h2> {catcard.name} Coupons & Promo Codes </h2>
+                            <h2> {catcard.name} Coupons & Promo Codes</h2>
                             {catcard?.data?.map((item) => {
                                 return <div className="cat-card col-md-4">
                                     <Link href={`/store/${item.slug}`} > <Categorycrad item={item} img={catcard.url} /></Link>
@@ -49,6 +51,14 @@ const category = () => {
                         </div>
                     </div>
                 }
+                {data === 1 ?   <Favoritebrands /> : <>
+                <div className="container bg-white">
+                    <p>Automotive Coupon Codes, Discount Codes & Free Shipping Coupons, Don't Pay Extra, Save More With couponive.com Your Discount Partner</p>
+                </div>
+                </>}
+              
+                  
+              
             </div>
         </>
     )
