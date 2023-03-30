@@ -1,5 +1,6 @@
 import { APP_KEY, APP_URL } from '@/config';
 import React, { useState } from 'react'
+import { toast } from 'react-hot-toast';
 
 const contact = () => {
 
@@ -19,9 +20,11 @@ const contact = () => {
             body: JSON.stringify({ name, email, message, key: APP_KEY })
         }).then(res => res.json()).then((data) => {
             setIsLoading(false);
+             toast.success(data.message)
         }).catch(err => {
             console.error(err);
             setIsLoading(false);
+             toast.error('Something went wrong!')
         });
     }
     

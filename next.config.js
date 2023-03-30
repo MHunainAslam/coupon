@@ -3,8 +3,8 @@ const nextConfig = {
   reactStrictMode: true,
   images: {
 
-    domains: ['eliteblue.net'],
-
+    domains: ['eliteblue.net'], 
+    unoptimized: true,
     remotePatterns: [
       {
         protocol: 'https',

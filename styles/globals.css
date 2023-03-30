@@ -441,7 +441,9 @@ main[store-style="1"] .button {
   color: var(--primary);
   z-index: 1;
 }
-
+.fs-px{
+  font-size: 14px;
+}
 .browse-coupon {
   background-color: white;
   width: 30px;
@@ -449,7 +451,7 @@ main[store-style="1"] .button {
   margin-left: 4px;
   text-transform: capitalize;
 }
-
+.coupon
 .subscribe-head {
   font-weight: 700;
   font-size: 70px;

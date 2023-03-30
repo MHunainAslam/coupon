@@ -2,6 +2,7 @@ import { APP_KEY, APP_URL } from '@/config'
 import Image from 'next/image'
 import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
+import { toast } from 'react-hot-toast'
 import Coupon from './coupon'
 import Expire from './expire'
 
@@ -66,12 +67,16 @@ const detail = ({ storedetailapi, img }) => {
             body: JSON.stringify({ email, key: APP_KEY })
         }).then(res => res.json()).then((data) => {
             if (data.success) {
+                 toast.success(data.message)
+                 maill.reset()
             } else {
+                 toast.error(data.message)
             }
             setIsLoading(false);
         }).catch(err => {
             console.error(err);
             setIsLoading(false);
+            toast.error('Something went wrong!')
         });
     }
 
@@ -82,7 +87,7 @@ const detail = ({ storedetailapi, img }) => {
                 && <> */}
 
 
-            <h2 className='ms-3'> {storedetailapi?.data?.store.name} Coupons & Promo Codes</h2>
+            <h2 className='fw-bold'> {storedetailapi?.data?.store.name} Coupons & Promo Codes</h2>
             <div className="col-12 ">
                 {storedetailapi?.data?.coupon?.map((item) => {
                     return new Date(item.expire_date) > new Date() ?
@@ -93,14 +98,14 @@ const detail = ({ storedetailapi, img }) => {
                 }
                 )}
             </div>
-            <div className="col-12 px-2">
+            <div className="col-12 ">
                 <div class="row mx-auto my-3" id="email-alert-signup">
                     <div class="col-md-5 py-3 pe-0">
                         <h3 className='fs-5 text-white mb-0'>Get latest <em class="text-capitalize">{storedetailapi?.data?.store.name} Coupon</em> &amp; deals alert.  <Link href=" /footerpage/ " class="privacy fs-6 text-white">Privacy Policy</Link></h3>
                     </div>
                     <div class="col-md-7" yth="">
 
-                        <form class="search ajax-form search-alert-signup py-3 d-flex w-100 h-100" onSubmit={handleContact}>
+                        <form class="search ajax-form search-alert-signup py-3 d-flex w-100 h-100" id='maill' onSubmit={handleContact}>
                             <div class="text-field-holder w-80">
                                 <input id="email_" type="email" name="email" placeholder="Email Address" className='w-100 h-100 px-3' />
                             </div>
@@ -119,7 +124,7 @@ const detail = ({ storedetailapi, img }) => {
             
             {expir
                 && <> */}
-            <h2 className='text-start ps-3 mb-0 mt-3'>Expired {storedetailapi?.data?.store.name} Coupons & Promo Codes</h2>
+            <h2 className='text-start fw-bold mb-0 mt-3'>Expired {storedetailapi?.data?.store.name} Coupons & Promo Codes</h2>
             <div className="text-expired">
                 {storedetailapi?.data?.coupon?.map((item) => {
 

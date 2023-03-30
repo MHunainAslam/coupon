@@ -16,19 +16,19 @@ console.log(coupon);
 console.log("aas",coupon);
     return (
 
-        <div className=" bg-white p-2 my-2 mx-2 coupon d-flex">
-            <div className="col-2 my-auto ">
+        <div className=" bg-white  my-2 h-100 px-3 py-2 coupon d-flex">
+            <div className="col-2  ">
 
                 <Image src={img} fill={true} className='h-auto position-relative' />
 
             </div>
             <div className="col-8 my-auto px-4">
-                <Link href="#" className={`h5 text-${!coupon?.code ? 'secondary' : 'primary'}`}>{coupon?.title}</Link>
-                <p className='tr-2 my-1 d-md-block d-none' dangerouslySetInnerHTML={{ __html: coupon.description }}></p>
+                <Link href="#" className={`h3 text-${!coupon?.code ? 'secondary' : 'primary'}`}>{coupon?.title}</Link>
+                <p className='tr-2 my-1 d-md-block d-none fs-px' dangerouslySetInnerHTML={{ __html: coupon.description }}></p>
                 {coupon.featured === 'on' ? <p class="expiredate m-0   text-primary"><i class="fas fa-star  text-primary" aria-hidden="true"></i> New Coupon</p> : '' }
                 
                 <div className='d-md-flex justify-content-between mb-0'>
-                    <small>Expires:
+                    <p className='x-small mb-0'>Expires:
 
                         {coupon.expire_date ?
                             `${monthNames[edate.getMonth()].slice(0, 3)} ${edate.getDate()}, ${edate.getFullYear()}`
@@ -36,7 +36,7 @@ console.log("aas",coupon);
                             ' Expire Soon'
                         }
 
-                    </small>
+                    </p>
                     {!is_ico
                         &&
                         <div className=" coupon-social d-md-block d-none">
@@ -71,7 +71,7 @@ console.log("aas",coupon);
                 <Link href={`${coupon?.url || ''}`} onClick={() => { window.open(`/store/${slug?.query?.slug}/${coupon?.id}`) }} className={`p-2  d-md-none d-block button button-${!coupon?.code ? 'secondary' : 'primary'}`}  >
                     {!coupon?.code ? '>' : '>'}
                 </Link>
-                <small className='d-md-block d-none'>Update: {`${monthNames[date.getMonth()].slice(0, 3)} ${date.getDate()}, ${date.getFullYear()}`} </small>
+                <p className='d-md-block d-none x-small text-center'>Update: {`${monthNames[date.getMonth()]} ${date.getDate()}, ${date.getFullYear()}`} </p>
             </div>
         </div >
 
