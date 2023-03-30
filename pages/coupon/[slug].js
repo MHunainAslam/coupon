@@ -1,11 +1,12 @@
 import Spinner from '@/components/Spinner'
 import Categorycrad from '@/components/store/coupon'
-import { APP_KEY, APP_URL } from '@/config'
+import { APP_KEY, APP_URL, DEFAULT_DESC, DEFAULT_TITLE } from '@/config'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import React, { useEffect, useState } from 'react'
 
 import ReactPaginate from 'react-paginate';
+import Layout from '../Layout'
 
 
 
@@ -77,6 +78,7 @@ const coupon = () => {
     if (loading) return <div className='bg-white vh-100 vw-100 d-flex justify-content-center overflow-hidden align-items-center position-fixed top-0 start-0 z-1'><Spinner /></div>
 
     return (
+         <Layout title={`${coupondropdown?.name || DEFAULT_TITLE}`} metaDescription={`${coupondropdown?.data?.store?.seo_description || DEFAULT_DESC}`} metaKeywords={`${coupondropdown?.data?.store?.meta_key}`} metaTitle={`${coupondropdown?.data?.store?.seo_title}`}>
         <div className="container my-3">
             <div className="row justify-content-center">
                 <div className="col-md-10 p-0">
@@ -87,6 +89,7 @@ const coupon = () => {
                 </div>
             </div>
         </div>
+         </Layout>
     )
 }
 

@@ -20,11 +20,11 @@ const modal = ({ popup, store }) => {
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onClick={() => setIsOpen(!isOpen)}></button>
                     </div>
                     <div class="modal-body">
-                        <Link className='h5 text-secondary' href="#">{popup.title}</Link>
-                        <p className='tr-2 my-1' dangerouslySetInnerHTML={{ __html: popup.description }}></p>
+                        <Link className='h5 text-secondary' href="#">{popup?.title}</Link>
+                        <p className='tr-2 my-1' dangerouslySetInnerHTML={{ __html: popup?.description }}></p>
                         <div className='text-center mt-3'>
-                            <small className={`p-2 m-5  ${popup.code ? 'bg-code  h3' : ''}`}>{popup.code || 'No Coupon Needed'}</small> <br />
-                            <Link href={`${popup.url}`} className='button button-secondary my-4' onClick={() => navigator.clipboard.writeText(`${popup.code}`)}>{popup.code ? `Copy and Go To the ${store}` : `Go To the ${store}`}</Link>
+                            <small className={`p-2 m-5  ${popup?.code ? 'bg-code  h3' : ''}`}>{popup?.code || 'No Coupon Needed'}</small> <br />
+                            <Link href={`${popup?.url}`} className='button button-secondary my-4' onClick={() => navigator.clipboard.writeText(`${popup?.code}`)}>{popup?.code ? `Copy and Go To the ${store}` : `Go To the ${store}`}</Link>
                         </div>
                     </div>
                     <div class=" text-center">

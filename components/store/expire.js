@@ -12,7 +12,7 @@ const expire = ({ expire, img }) => {
 
     return (
         <div className="my-2 h-100 px-3 py-2 coupon d-flex bg-white">
-            <div className="col-md-2 ">
+            <div className="col-md-2 my-auto">
                 <Image src={`${img || ''}`} fill={true} className='h-auto position-relative' />
             </div>
             <div className="col-8 my-auto px-4">

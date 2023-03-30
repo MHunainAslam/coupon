@@ -70,8 +70,8 @@ const country = () => {
     if (loading) return <div className='bg-white vh-100 vw-100 d-flex justify-content-center overflow-hidden align-items-center position-fixed top-0 start-0 z-1'><Spinner /></div> 
    
     return (
-        <>
-         
+        
+           <Layout title={`${countrycard?.name || DEFAULT_TITLE}`} metaDescription={`${singlestore?.data?.store?.seo_description || DEFAULT_DESC}`} metaKeywords={`${singlestore?.data?.store?.meta_key}`} metaTitle={`${singlestore?.data?.store?.seo_title}`}>
             <div className="container my-3">
             {err ? <p className='text-center my-auto py-5'>{err}</p> : 
                 <div className="row">
@@ -84,7 +84,7 @@ const country = () => {
                 </div>
                 }
             </div>
-        </>
+        </Layout>
     )
 }
 

@@ -60,7 +60,7 @@ export default function App({ Component, pageProps }) {
       <div className='bg-white vh-100 vw-100 d-flex justify-content-center align-items-center'><Spinner /></div>
     </Layout>
   )
-  if (err) return <div>Something went wront</div>
+  if (err) return <div className='text-center my-auto'>Something went wrong!</div>
   else {
 
     return <>

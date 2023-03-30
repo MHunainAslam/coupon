@@ -5,7 +5,7 @@ import { useRouter } from 'next/router'
 import Link from 'next/link'
 import Sidepanel from '@/components/store/sidepanel'
 import Detail from '@/components/store/detail'
-import { APP_KEY, APP_URL, DEFAULT_DESC } from '@/config'
+import { APP_KEY, APP_URL, DEFAULT_DESC, DEFAULT_TITLE } from '@/config'
 import Spinner from '@/components/Spinner'
 import Layout from './Layout';
 
