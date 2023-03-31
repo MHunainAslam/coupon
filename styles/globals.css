@@ -526,24 +526,33 @@ main[store-style="2"] .dropdown-item-hov:hover {
   width: 90%;
 }
 
-.show-code-2 a:hover {
+/* .show-code-2 a:hover {
   background-color: #ff870b;
-  content: "";
   width: 80%;
   opacity: 1;
-  /* transition: 1s; */
+  transition: 1s;
   display: block;
   left: 0;
   top: 0;
   border-radius: 5px 0px 0px 5px;
-}
+} */
 
 .footer2-icon li a i {
   font-size: 20px;
 }
-
+.show-code-2-code{
+  position: absolute;
+  bottom: 1px;
+  border: 2px dashed var(--secondary);
+  width: 95%;
+  height: 42px;
+  padding-right: 5px;
+  font-size: larger;
+}
 .show-code-2 a::after {
   content: "Show Deal";
+   background-color: var(--primary);
+
 }
 
 .show-code-2 h4 {
@@ -564,18 +573,33 @@ main[store-style="2"] .dropdown-item-hov:hover {
 .header-logo {
   aspect-ratio: 1/0.3;
 }
-.deal-body .card .card-footer .bg-orange {
-  width: 90% !important;
-  margin-left: -23px;
-  padding: 12.5px;
+.show-code-2-btn:hover {
+opacity: 1;
 }
-.deal-body .card .card-footer .code-btn {
-  border-radius: 5px;
-  padding: 12px;
-  z-index: 999;
-  position: relative;
+.show-code-2-btn {
+  background-color: var(--secondary);
+  height: 46px;
+  width: 95% !important;
+  display: flex;
+  align-items: center;
+  place-content: center;
+  z-index: 1;
+}
+.bg-orange::before {
+  background-color: #ff870b;
+  content: "";
+  width: 80%;
+  height: 45px;
   transition: 1s;
+  display: block;
+  left: 0;
+  position: absolute;
+  top: 0;
+  transform: skew(0deg,0deg);
+  z-index: -38;
+  border-radius: 5px 0px 0px 5px;
 }
+
 .deal-body .card-footer .code {
   position: absolute;
   top: 80%;

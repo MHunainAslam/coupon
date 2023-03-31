@@ -4,7 +4,7 @@ import Link from 'next/link'
 import React, { useState } from 'react'
 
 const Couponcard = ({ data, item, img }) => {
-
+    console.log(item);
     return (
         <>
             {data.Style === 1 ?
@@ -40,24 +40,27 @@ const Couponcard = ({ data, item, img }) => {
 
                     </div>
                     <div class="card-body">
-                        <Link href={`all-stores/`}> <h5 class="card-title text-primary fw-bold">{item.title}</h5></Link>
-                        <h4 class="card-text text-secondary fw-bold">{item.discount}</h4>
-                        <p class="card-text">{item.extraoff}</p>
+                        <Link href={`all-stores/`}> <h5 class="card-title text-primary fw-bold">{item.store_name}</h5></Link>
+                        <h3 class="card-text text-secondary fw-bold" dangerouslySetInnerHTML={{ __html: item.title }}></h3>
+                        <p class="card-text" dangerouslySetInnerHTML={{ __html: item.description }}></p>
                         <h6 class="card-text fw-bold">{item.offertime}</h6>
                     </div>
                     <div className="card-footer bg-transparent ">
                         {item.type === 'showdeal' ?
                             <Link href="" className='button button-secondary w-100 rounded-1 px-1 py-2'>Show Deal</Link>
                             : <>
-                                <div className="show-code-2 position-relative">
+                                {/* <div className="show-code-2 position-relative">
                                     <h4 className='w-100 text-center overflow-hidden'>{item.code}</h4>
                                     <Link href="" className='button button-primary px-1 rounded-1 py-2'></Link>
-                                </div>
-                                <div class="btncard_link">
+                                </div> */}
+                                <div class="btncard_link position-relative ">
 
 
+                                    <Link href="" class="btn btn-sm px-5 why w-100 show-code-2-btn position-relative bg-orange btn code-btn  text-white font-weight-bold">
+                                        <span>Show Code</span>
+                                    </Link>
 
-                                    <div class="code">CV5</div>
+                                    <div class="show-code-2-code overflow-hidden justify-content-end fw-bold d-flex align-items-center  my-auto">{item.code}</div>
                                 </div>
                             </>
                         }
