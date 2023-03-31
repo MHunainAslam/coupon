@@ -40,27 +40,16 @@ export default function App({ Component, pageProps }) {
       setLoading(false);
       setErr(true)
     })
-  }, [])
+  }, []);
 
-  // const data = {
-  //   color: {
-  //     primary: '#f16d00',
-  //     secondary: '#1b96b8',
-  //   },
-  //   logo: {
-  //     // header: logo,
-  //     footer: logo,
-  //     favicon: 'data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201024%201024%22%20style%3D%22background%3A%236276c4%22%3E%3Cg%3E%3Ctext%20text-anchor%3D%22middle%22%20dy%3D%22.35em%22%20x%3D%22512%22%20y%3D%22512%22%20fill%3D%22%23ffffff%22%20font-size%3D%22700%22%20font-family%3D%22-apple-system%2C%20BlinkMacSystemFont%2C%20Roboto%2C%20Helvetica%2C%20Arial%2C%20sans-serif%22%3EC%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fsvg%3E'
-  //   },
-  //   Style: 1,
-  // }
+  console.log(data);
+
   if (loading) return (
-    <Layout title="Home - " metaTitle="" metaDescription="A" logo=""  >
-
+    <Layout title={`${data?.meta ? data?.meta?.title : "Home - More Coupon Codes"}`} metaTitle={`${data?.meta ? data?.meta?.title : "Home - More Coupon Codes"}`} metaDescription={`${data?.meta ? data?.meta?.description : "More Coupon Codes"}`} logo="" metaKeywords={`${data?.meta ? data?.meta?.keywords : "More Coupon Codes"}`}  >
       <div className='bg-white vh-100 vw-100 d-flex justify-content-center align-items-center'><Spinner /></div>
     </Layout>
   )
-  if (err) return <div className='text-center my-auto'>Something went wrong!</div>
+  if (err) return <div className='text-center error my-auto vw-100 vh-100 d-flex justify-content-center align-items-center'>Something went wrong!</div>
   else {
 
     return <>
@@ -80,7 +69,8 @@ export default function App({ Component, pageProps }) {
         }
       </style>
 
-      <Layout title="Home - " metaTitle="" metaDescription="A" logo="" themeData={data}>
+      <Layout title={`${data?.meta ? data?.meta?.title : "Home - More Coupon Codes"}`} metaTitle={`${data?.meta ? data?.meta?.title : "Home - More Coupon Codes"}`} metaDescription={`${data?.meta ? data?.meta?.description : "More Coupon Codes"}`} logo="" metaKeywords={`${data?.meta ? data?.meta?.keywords : "More Coupon Codes"}`}  >
+
         {
           data.Style === 1 ?
             <Header1 data={data} /> :

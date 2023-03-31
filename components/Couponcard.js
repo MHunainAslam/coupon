@@ -5,7 +5,6 @@ import React, { useState } from 'react'
 
 const Couponcard = ({ data, item, img }) => {
 
- console.log(item);
     return (
         <>
             {data.Style === 1 ?
@@ -37,7 +36,7 @@ const Couponcard = ({ data, item, img }) => {
                 // ${item.type === 'topdeal' ? 'top-deal' : ''}
                 <div class={`card position-relative border-0 h-100  `}>
                     <div className="img-overlay  ">
-                    <Image src={`${!img ? '' : img + "/" + item?.store_logo}`} alt={item.store_name} fill={true} className='w-100 position-relative p-4'></Image>
+                        <Image src={`${!img ? '' : img + "/" + item?.store_logo}`} alt={item.store_name} fill={true} className='w-100 position-relative p-4'></Image>
 
                     </div>
                     <div class="card-body">
@@ -49,13 +48,18 @@ const Couponcard = ({ data, item, img }) => {
                     <div className="card-footer bg-transparent ">
                         {item.type === 'showdeal' ?
                             <Link href="" className='button button-secondary w-100 rounded-1 px-1 py-2'>Show Deal</Link>
-                            : <div>
+                            : <>
                                 <div className="show-code-2 position-relative">
                                     <h4 className='w-100 text-center overflow-hidden'>{item.code}</h4>
                                     <Link href="" className='button button-primary px-1 rounded-1 py-2'></Link>
                                 </div>
+                                <div class="btncard_link">
 
-                            </div>
+
+
+                                    <div class="code">CV5</div>
+                                </div>
+                            </>
                         }
                         {/* <p className='text-expired my-auto'> used {item.store} times</p> */}
                     </div>

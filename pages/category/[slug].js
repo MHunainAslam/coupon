@@ -61,7 +61,7 @@ const category = ({ data, categ }) => {
     if (loading) return <div className='bg-white vh-100 vw-100 d-flex justify-content-center overflow-hidden align-items-center position-fixed top-0 start-0 z-1'><Spinner /></div>
 
     return (
-        <Layout title={`${catcard?.name || DEFAULT_TITLE}`} metaDescription={`${catcard?.data?.store?.seo_description || DEFAULT_DESC}`} metaKeywords={`${catcard?.data?.store?.meta_key}`} metaTitle={`${catcard?.data?.store?.seo_title}`}>
+        <Layout title={`${data?.meta ? data?.meta?.title : "Home - More Coupon Codes"}`} metaTitle={`${data?.meta ? data?.meta?.title : "Home - More Coupon Codes"}`} metaDescription={`${data?.meta ? data?.meta?.description : "More Coupon Codes"}`} logo="" metaKeywords={`${data?.meta ? data?.meta?.keywords : "More Coupon Codes"}`}  >
             <div className="min-vh-100">
                 {err ? <p className='text-center my-auto py-5'>{err}</p> :
                     <div className="container my-3">

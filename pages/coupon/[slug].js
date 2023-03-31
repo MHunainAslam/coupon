@@ -77,7 +77,7 @@ function PaginatedItems({ itemsPerPage, items, coupondropdown }) {
     );
 }
 
-const coupon = ({ coupon }) => {
+const coupon = ({ coupon, data }) => {
 
     const [coupondropdown, setcoupondropdown] = useState([])
 
@@ -88,15 +88,6 @@ const coupon = ({ coupon }) => {
     const [loading, setloading] = useState(true)
 
     useEffect(() => {
-        // setloading(true);
-        // fetch(`${APP_URL}api/coupon?key=${APP_KEY}&type=${slug}`).then(res => res.json()).then((dta) => { 
-        //     setcoupondropdown(dta);
-        //     setloading(false);
-        // }).catch(err => {
-        //     setloading(false);
-        //     setError(true);
-        // })
-
         setloading(true);
         if (coupon) {
             setloading(false);
@@ -114,7 +105,7 @@ const coupon = ({ coupon }) => {
     if (loading) return <div className='bg-white vh-100 vw-100 d-flex justify-content-center overflow-hidden align-items-center position-fixed top-0 start-0 z-1'><Spinner /></div>
 
     return (
-        <Layout title={`${coupondropdown?.name || DEFAULT_TITLE}`} metaDescription={`${coupondropdown?.data?.store?.seo_description || DEFAULT_DESC}`} metaKeywords={`${coupondropdown?.data?.store?.meta_key}`} metaTitle={`${coupondropdown?.data?.store?.seo_title}`}>
+        <Layout title={`${data?.meta ? data?.meta?.title : "Home - More Coupon Codes"}`} metaTitle={`${data?.meta ? data?.meta?.title : "Home - More Coupon Codes"}`} metaDescription={`${data?.meta ? data?.meta?.description : "More Coupon Codes"}`} logo="" metaKeywords={`${data?.meta ? data?.meta?.keywords : "More Coupon Codes"}`}  >
             <div className="container my-3">
                 <div className="row justify-content-center">
                     <div className="col-md-10 p-0">

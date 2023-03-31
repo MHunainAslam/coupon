@@ -21,7 +21,6 @@ const Popular = ({ styledata }) => {
             setStores(styledata.Style === 1 ? stores?.data : stores);
             setImg(stores?.url);
             setLoading(false);
-            console.log(stores);
             // setImg(popular.url)
         }).catch(err => {
             // setLoading(false);

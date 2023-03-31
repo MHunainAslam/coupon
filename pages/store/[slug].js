@@ -48,23 +48,15 @@ const Storedetail = ({ store, data }) => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        // setLoading(true)
-        // fetch(`${APP_URL}api/single-store/${slug}?key=${APP_KEY}&cou=${dta.query.couponmodal}`).then(res => res.json()).then((dta) => {
-        //     setsinglestore(dta);
-        //     setLoading(false);
-        // }).catch(err => {
-        //     setLoading(false);
-        //     setError(true);
-        // });
 
         setLoading(true);
         if (store) {
             setLoading(false);
-            setError(null)
+            setError(null);
         }
         if (store.success === false) {
             setError('No Store Found!')
-        } 
+        }
         setsinglestore(store);
     }, [slug]);
 
@@ -72,11 +64,11 @@ const Storedetail = ({ store, data }) => {
 
     return (
 
-        <Layout title={`${singlestore?.data?.store?.name || DEFAULT_TITLE}`} metaDescription={`${singlestore?.data?.store?.seo_description || DEFAULT_DESC}`} metaKeywords={`${singlestore?.data?.store?.meta_key}`} metaTitle={`${singlestore?.data?.store?.seo_title}`}>
+        <Layout title={`${data?.meta ? data?.meta?.title : "Home - More Coupon Codes"}`} metaTitle={`${data?.meta ? data?.meta?.title : "Home - More Coupon Codes"}`} metaDescription={`${data?.meta ? data?.meta?.description : "More Coupon Codes"}`} logo="" metaKeywords={`${data?.meta ? data?.meta?.keywords : "More Coupon Codes"}`}  >
 
             <div className="container">
                 <div className='row'>
-                    <div className="col-md-3 col-12  my-md-5 my-3 h-100">
+                    <div className="col-md-3 col-12 mt-3 my-md-5 h-100">
                         <Sidepanel sidepanelapi={singlestore} img={singlestore.url} />
                     </div>
                     <div className="col-md-9 col-12 my-5 px-2">

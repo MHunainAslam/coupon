@@ -5,7 +5,7 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import React, { useEffect, useState } from 'react'
 
-const country = () => {
+const country = ({data}) => {
 
     const dta = useRouter()
     let slug = dta?.query?.slug;
@@ -28,60 +28,22 @@ const country = () => {
             setError('something went wrong!');
             setloading(false)
         })
-    }, [slug])
-    // const countrycard = [
-    //     {
-    //         url: "https://morecouponcode.com/adminpanel/assets/images/store/ashimary%20Hair%20Coupon%20Logo.png",
-    //         shipping: 'Rafer A Friend',
-    //         type: 'code',
-    //         title: "Ashimary Hair Coupons",
-    //         slug: "new-coupon-slug",
-    //         coupon_id: 122,
-    //     },
-    //     {
-    //         url: "https://morecouponcode.com/adminpanel/assets/images/store/leg.PNG",
-    //         shipping: 'Upto $299 Off St Patricks Day Sale',
-    //         title: "Diet Smoke Coupons",
-    //         slug: "new-coupon-slug",
-    //         coupon_id: 123,
-    //     },
-    //     {
-    //         url: "https://morecouponcode.com/adminpanel/assets/images/store/Newpowa.png",
-    //         title: "Newpowa Coupons",
-    //         shipping: 'Rafer A Friend',
-    //         slug: "new-coupon-slug",
-    //         coupon_id: 124,
-    //     },
-    //     {
-    //         url: "https://morecouponcode.com/adminpanel/assets/images/store/ashimary%20Hair%20Coupon%20Logo.png",
-    //         title: "Ashimary Hair Coupons",
-    //         shipping: 'Accessories For $39 ',
-    //         slug: "new-coupon-slug",
-    //         coupon_id: 125,
-    //     },
-    //     {
-    //         url: "https://morecouponcode.com/adminpanel/assets/images/store/ashimary%20Hair%20Coupon%20Logo.png",
-    //         title: "Ashimary Hair Coupons",
-    //         shipping: 'Rafer A Friend',
-    //         slug: "new-coupon-slug",
-    //         coupon_id: 126,
-    //     },
-    // ]
-    if (loading) return <div className='bg-white vh-100 vw-100 d-flex justify-content-center overflow-hidden align-items-center position-fixed top-0 start-0 z-1'><Spinner /></div> 
-   
+    }, [slug]) 
+    if (loading) return <div className='bg-white vh-100 vw-100 d-flex justify-content-center overflow-hidden align-items-center position-fixed top-0 start-0 z-1'><Spinner /></div>
+
     return (
-        
-           <Layout title={`${countrycard?.name || DEFAULT_TITLE}`} metaDescription={`${singlestore?.data?.store?.seo_description || DEFAULT_DESC}`} metaKeywords={`${singlestore?.data?.store?.meta_key}`} metaTitle={`${singlestore?.data?.store?.seo_title}`}>
+
+        <Layout title={`${data?.meta ? data?.meta?.title : "Home - More Coupon Codes"}`} metaTitle={`${data?.meta ? data?.meta?.title : "Home - More Coupon Codes"}`} metaDescription={`${data?.meta ? data?.meta?.description : "More Coupon Codes"}`} logo="" metaKeywords={`${data?.meta ? data?.meta?.keywords : "More Coupon Codes"}`}  >
             <div className="container my-3">
-            {err ? <p className='text-center my-auto py-5'>{err}</p> : 
-                <div className="row">
-                    <h2> {countrycard.name} Coupons & Promo Codes </h2>
-                    {countrycard?.data?.map((item) => {
-                        return <div className="cat-card col-md-4">
-                            <Link href={`/store/${item.slug}`} > <Categorycrad item={item} img={countrycard.url} /></Link>
-                        </div>
-                    }) }
-                </div>
+                {err ? <p className='text-center my-auto py-5'>{err}</p> :
+                    <div className="row">
+                        <h2> {countrycard.name} Coupons & Promo Codes </h2>
+                        {countrycard?.data?.map((item) => {
+                            return <div className="cat-card col-md-4">
+                                <Link href={`/store/${item.slug}`} > <Categorycrad item={item} img={countrycard.url} /></Link>
+                            </div>
+                        })}
+                    </div>
                 }
             </div>
         </Layout>
