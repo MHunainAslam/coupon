@@ -7,34 +7,57 @@ import { useRouter } from 'next/router'
 import React, { useEffect, useState } from 'react'
 import Layout from '../Layout'
 
-const category = ({ data }) => {
+
+export const getStaticPaths = async () => {
+    const response = await fetch(`${APP_URL}api/category?key=${APP_KEY}&paginate=12`)
+    const data = await response.json();
+    const paths = data?.data?.map((item) => {
+        return { params: { slug: item?.slug } }
+    })
+
+    return {
+        paths,
+        fallback: true
+    }
+}
+
+export async function getStaticProps({ params }) {
+
+    const { slug } = params;
+    const response = await fetch(`${APP_URL}api/store?key=${APP_KEY}&category=${slug}`)
+    const data = await response.json();
+
+    return {
+        props: { categ: data },
+    };
+}
+
+
+
+const category = ({ data, categ }) => {
 
     const dta = useRouter()
     let slug = dta?.query?.slug;
-    const [catcard, setcatcard] = useState({})
+
+    console.log(categ);
+
+    const [catcard, setcatcard] = useState({});
     const [err, setError] = useState(null);
     const [loading, setloading] = useState(true);
 
+    console.log(categ);
     useEffect(() => {
-
         setloading(true);
-        fetch(`${APP_URL}api/store?key=${APP_KEY}&category=${slug}`).then(res => res.json()).then((dta) => {
-            if (dta.success) {
-                setcatcard(dta);
-                setError(null);
-            } else {
-                setError(dta.message)
-            }
-            setloading(false)
-        }).catch(err => {
-            setError('something went wrong!');
-            setloading(false)
-        })
+        if (categ) {
+            setloading(false);
+            setError(null)
+        }
+        if (categ.success === false) {
+            setError('No Category Found!')
+        }
+        setcatcard(categ);
     }, [slug])
- 
-    // const catcard = [
-    //     "hello"
-    // ]
+
     if (loading) return <div className='bg-white vh-100 vw-100 d-flex justify-content-center overflow-hidden align-items-center position-fixed top-0 start-0 z-1'><Spinner /></div>
 
     return (
@@ -52,18 +75,37 @@ const category = ({ data }) => {
                         </div>
                     </div>
                 }
-                {data === 1 ?   <Favoritebrands /> : <>
-                <div className="container bg-white p-2 mb-2">
-                    {/* <p className='mb-0'>Automotive Coupon Codes, Discount Codes & Free Shipping Coupons, Don't Pay Extra, Save More With couponive.com Your Discount Partner</p> */}
-                    <p className='mb-0' dangerouslySetInnerHTML={{ __html: catcard.description }}></p>
-                </div>
-                </>}
-              
-                  
-              
+                {err === null ?
+                    data === 1 ? <Favoritebrands /> : <>
+                        <div className="container bg-white p-2 mb-2">   
+                            {/* <p className='mb-0'>Automotive Coupon Codes, Discount Codes & Free Shipping Coupons, Don't Pay Extra, Save More With couponive.com Your Discount Partner</p> */}
+                            <p className='mb-0' dangerouslySetInnerHTML={{ __html: catcard.description }}></p>
+                        </div>
+                    </>
+                    : ''
+                } 
             </div>
         </Layout>
     )
 }
 
 export default category
+
+
+// export async function getStaticProps({ params }) {
+
+//     const slug = params.slug;
+
+//     // const response = await fetch(`${APP_URL}api/store?key=${APP_KEY}&category=${slug}`)
+//     const response = await fetch(`${APP_URL}api/category?key=${APP_KEY}&paginate=12`)
+
+//     const data = await response.json();
+
+//     const paths: response?.data?.map((item) => {
+//         return item?.slug
+//     })
+
+//     return {
+//         props: { categ: data },
+//     };
+// }

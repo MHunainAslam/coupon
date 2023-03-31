@@ -1,24 +1,52 @@
+import { APP_KEY, APP_URL } from '@/config'
 import Image from 'next/image'
 import Link from 'next/link'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import logo from '../../public/assets/logo-white.png'
+import Spinner from '../Spinner'
 
 const Footer2 = () => {
     const about = [
         "Couponive is the website where you can find latest and verified coupons and promotion codes. Redeem and save now! Big Discounts. Simple Search. Get Code. Big Discount. Always Sale. The Best Price. Paste Code at Checkout. ALmost 5000+ Stores. Redeem Code Online."
     ]
 
-    const aboutus = [
-        "About us", "Term Of Use", "Privacy Policy",
-    ]
-    const ShopByCountry = [
-        "United State", "United Kingdom", "Canada",
-    ]
-    const WhatTrending = [
-        "Father's Day Deals",
-        "Black Friday Deals",
-        "Cyber Monday Deals",
-    ]
+
+    const [aboutus, setaboutus] = useState({})
+    const [country, setcountry] = useState(true);
+    const [WhatTrending, setWhatTrending] = useState(true);
+    const [loading, setloading] = useState(true);
+
+    useEffect(() => {
+        fetch(`${APP_URL}api/pages?key=${APP_KEY}`).then(res => res.json()).then((aboutusdta) => {
+            setaboutus(aboutusdta);
+            setloading(false)
+        }).catch(err => {
+            setloading(false)
+        })
+        fetch(`${APP_URL}api/country?key=${APP_KEY}&paginate=5`).then(res => res.json()).then((countrydta) => {
+            setcountry(countrydta)
+        }).catch(err => {
+            setError(true);
+        })
+        fetch(`${APP_URL}api/season?key=${APP_KEY}&graph=tranding&paginate=5`).then(res => res.json()).then((WhatTrendingdta) => {
+            setWhatTrending(WhatTrendingdta)
+        }).catch(err => {
+            setError(true);
+        })
+    }, [])
+    console.log("aa", aboutus);
+    // const ShopByCountry = [
+    //     "United State", "United Kingdom", "Canada",
+    // ]
+    // const aboutus = [
+    //     "United State", "United Kingdom", "Canada",
+    // ]
+    // const WhatTrending = [
+    //     "Father's Day Deals",
+    //     "Black Friday Deals",
+    //     "Cyber Monday Deals",
+    // ]
+    if (loading) return <div className='bg-white vh-100 vw-100 d-flex justify-content-center overflow-hidden align-items-center position-fixed top-0 start-0 z-1'><Spinner /></div>
 
     return (
         <>
@@ -42,31 +70,34 @@ const Footer2 = () => {
                             <div className="col-md-4 ">
                                 <h2 className='my-auto text-white fw-bolder'>About US</h2>
                                 <ul className='footer-link p-0 text-white pt-3'>
-                                    {aboutus.map((aboutli) => {
+                                    {aboutus?.data?.map((aboutli) => {
                                         return <li className='mb-1'>
-                                            <Link href="">{aboutli}</Link>
+                                            <Link href={`/footerpages/${aboutli.slug}`}>{aboutli.name}</Link>
                                         </li>
                                     })}
-
+                                    <li className='mb-1'>
+                                         <Link href="/contact">Contact Us</Link>
+                                    </li>
+                                     
                                 </ul>
                             </div>
                             <div className="col-md-4 ">
                                 <h2 className='my-auto text-white fw-bolder'>Shop By Country</h2>
                                 <ul className='footer-link p-0 text-white pt-3'>
-                                    {ShopByCountry.map((ShopByCountryli) => {
-                                        return <li className='mb-1'>
-                                            <Link href="">{ShopByCountryli}</Link>
-                                        </li>
+                                    {country?.data?.map((ShopByCountryli) => {
+                                         return <li className='mb-1'>
+                                         <Link href={`/coupon/${ShopByCountryli.slug}`}>{ShopByCountryli.name}</Link>
+                                     </li>
                                     })}
 
-                                </ul>
+                                </ul> 
                             </div>
                             <div className="col-md-4 ">
-                                <h2 className='my-auto text-white fw-bolder'>Shop By Country</h2>
+                                <h2 className='my-auto text-white fw-bolder'>What's Trending</h2>
                                 <ul className='footer-link p-0 text-white pt-3'>
-                                    {WhatTrending.map((WhatTrendingli) => {
+                                    {WhatTrending?.data?.map((WhatTrendingli) => {
                                         return <li className='mb-1'>
-                                            <Link href="">{WhatTrendingli}</Link>
+                                            <Link href="">{WhatTrendingli.name}</Link>
                                         </li>
                                     })}
 

@@ -2,9 +2,25 @@ import Spinner from '@/components/Spinner';
 import { APP_KEY, APP_URL, DEFAULT_DESC, DEFAULT_TITLE } from '@/config';
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react'
-import Layout from './Layout';
+import Layout from '../Layout';
 
-const categories = () => {
+
+
+
+export async function getStaticProps() {
+
+    const response = await fetch(`${APP_URL}api/category?key=${APP_KEY}&paginate=12`)
+    const data = await response.json();
+
+    return {
+        props: { categ: data },
+    };
+}
+
+
+
+
+const categories = ({ categ }) => {
 
     const [favcat, setfavcat] = useState({})
     const [err, setError] = useState(false);
@@ -12,13 +28,13 @@ const categories = () => {
 
 
     useEffect(() => {
-        fetch(`${APP_URL}api/category?key=${APP_KEY}&paginate=12`).then(res => res.json()).then((favcatdata) => {
-            setfavcat(favcatdata)
-            setloading(false);
-        }).catch(err => {
-            setloading(false);
-            setError(true);
-        })
+        setloading(false);
+        if (categ) {
+            setfavcat(categ)
+        } else {
+            setfavcat({})
+            setError(true)
+        }
     }, [])
 
     if (loading) return <div className='bg-white vh-100 vw-100 d-flex justify-content-center overflow-hidden align-items-center position-fixed top-0 start-0 z-1'><Spinner /></div>

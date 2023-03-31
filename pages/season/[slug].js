@@ -6,7 +6,40 @@ import { useRouter } from 'next/router'
 import React, { useEffect, useState } from 'react'
 import Layout from '../Layout'
 
-const Seasonpage = ({ data }) => {
+
+
+
+
+export const getStaticPaths = async () => {
+    const response = await fetch(`${APP_URL}api/season?key=${APP_KEY}&paginate=10`)
+    const data = await response.json();
+    const paths = data?.data?.map((item) => {
+        return { params: { slug: item?.slug } }
+    })
+
+    return {
+        paths,
+        fallback: true
+    }
+}
+
+export async function getStaticProps({ params }) {
+
+    const { slug } = params;
+
+    console.log(slug);
+    const response = await fetch(`${APP_URL}api/coupon?key=${APP_KEY}&season=${slug}`)
+    const data = await response.json();
+    console.log(data);
+    return {
+        props: { season: data },
+    };
+}
+
+
+
+
+const Seasonpage = ({ data, season }) => {
 
     const [seasondropdown, setseasondropdown] = useState({})
     const [err, setError] = useState(false);
@@ -14,22 +47,34 @@ const Seasonpage = ({ data }) => {
     const seasonslug = useRouter()
     let slug = seasonslug?.query?.slug;
 
-    useEffect(() => {
-        fetch(`${APP_URL}api/coupon?key=${APP_KEY}&season=${slug}`).then(res => res.json()).then((dta) => {
-            if (dta.success) {
-                setseasondropdown(dta);
-                setError(null);
-            } else {
-                setError(dta.message)
-            }
-            setloading(false)
-        }).catch(err => {
-            setError(true);
-            setloading(false)
-        })
-    }, [slug])
+    // useEffect(() => {
+    //     fetch(`${APP_URL}api/coupon?key=${APP_KEY}&season=${slug}`).then(res => res.json()).then((dta) => {
+    //         if (dta.success) {
+    //             setseasondropdown(dta);
+    //             setError(null);
+    //         } else {
+    //             setError(dta.message)
+    //         }
+    //         setloading(false)
+    //     }).catch(err => {
+    //         setError(true);
+    //         setloading(false)
+    //     })
+    // }, [slug])
 
-    console.log("aa", seasondropdown);
+    useEffect(() => {
+        setloading(true);
+        console.log("heyyy");
+        if (season) {
+            setloading(false);
+            setError(null);
+        }
+        if (season.success === false) {
+            setError('No Season Found!');
+        }
+        setseasondropdown(season);
+    }, [slug])
+ 
     if (loading) return <div className='bg-white vh-100 vw-100 d-flex justify-content-center overflow-hidden align-items-center position-fixed top-0 start-0 z-1'><Spinner /></div>
 
     return (

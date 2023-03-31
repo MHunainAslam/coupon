@@ -19,8 +19,14 @@ const contact = () => {
             method: 'POST',
             body: JSON.stringify({ name, email, message, key: APP_KEY })
         }).then(res => res.json()).then((data) => {
+            if (data.success) {
+                toast.success(data.message)
+                ContactForm.reset()
+           } else {
+                toast.error(data.message)
+           }
             setIsLoading(false);
-             toast.success(data.message)
+            
         }).catch(err => {
             console.error(err);
             setIsLoading(false);
@@ -39,7 +45,7 @@ const contact = () => {
                                     <div className="col-lg-12 col-md-7 order-md-last d-flex align-items-stretch">
                                         <div className="w-100 p-md-5 p-4">
                                             <h3 className="mb-4 txt-dark">Contact Us</h3>
-                                            <form onSubmit={handleContact}>
+                                            <form onSubmit={handleContact} id="ContactForm">
                                                 <input type="hidden" name="token" value="55d1cbfb801169a3188f6f7d742b6e60" />
                                                 <div className="row">
                                                     <div className="col-md-6">

@@ -145,7 +145,7 @@ const Header2 = ({ data }) => {
 
                             <li className="nav-item dropdown">
                                 <Link className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    Couopon
+                                    Coupon
                                 </Link >
                                 <ul className="dropdown-menu rounded-0 header-dd-2">
                                     {coupons?.map((coupondd) => {
