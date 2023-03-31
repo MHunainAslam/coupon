@@ -75,15 +75,14 @@ const category = ({ data, categ }) => {
                         </div>
                     </div>
                 }
-                {err === null ?
-                    data === 1 ? <Favoritebrands /> : <>
-                        <div className="container bg-white p-2 mb-2">   
-                            {/* <p className='mb-0'>Automotive Coupon Codes, Discount Codes & Free Shipping Coupons, Don't Pay Extra, Save More With couponive.com Your Discount Partner</p> */}
-                            <p className='mb-0' dangerouslySetInnerHTML={{ __html: catcard.description }}></p>
-                        </div>
-                    </>
-                    : ''
-                } 
+
+                {data === 1 ? <Favoritebrands /> : <>
+                    <div className="container bg-white p-2 mb-2">
+                        {/* <p className='mb-0'>Automotive Coupon Codes, Discount Codes & Free Shipping Coupons, Don't Pay Extra, Save More With couponive.com Your Discount Partner</p> */}
+                        <p className='mb-0' dangerouslySetInnerHTML={{ __html: catcard.description }}></p>
+                    </div>
+                </>}
+
             </div>
         </Layout>
     )

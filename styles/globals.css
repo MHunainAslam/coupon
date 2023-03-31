@@ -97,7 +97,10 @@ ul[role='navigation'] {
 .bg-header {
   background-color: var(--header) !important;
 }
+.navbar-toggler{
+  border-color: var(--header-text) !important;
 
+}
 .text-header {
   color: var(--header-text) !important;
 }
@@ -595,6 +598,9 @@ main[store-style="2"] .dropdown-item-hov:hover {
 
   .popular-width-1 {
     width: 33.333333%;
+  }
+  .text-expired a{
+    font-size: 1.25rem;
   }
 
 }

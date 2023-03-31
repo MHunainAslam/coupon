@@ -33,11 +33,11 @@ const Header2 = ({ data }) => {
             setError(true);
         })
 
-        
+
     }, [])
 
 
-    
+
 
     const [searchQuery, setSearchQuery] = useState([]);
     const [isActive, setIsActive] = useState(false);
@@ -70,7 +70,7 @@ const Header2 = ({ data }) => {
             setSearchQuery([])
         }
     }
-    
+
     const secondrycategory = [
         'Clothing/Apperal', "Arts & Entertainment", "Automotive"
     ]
@@ -84,15 +84,19 @@ const Header2 = ({ data }) => {
                         {/* <Image src={data?.url + "/" + data?.logo?.header || logo} alt="" className={'position-relative my-1 h-100'} fill={200} /> */}
                         <Image src={data?.url + "/" + data?.logo?.header || logo} alt="" className={'position-relative my-1 header-logo w-100'} fill={true} />
                     </Link>
-                    <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <span className="navbar-toggler-icon"></span>
+                    <button className="navbar-toggler shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        {/* <i class="bi bi-justify"></i> */}
+                        {/* <span className="navbar-toggler-icon"></span> */}
+                        <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="currentColor" class="bi bi-justify text-header" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M2 12.5a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z" />
+                        </svg>
                     </button>
-                    <div className="collapse navbar-collapse w-75 position-relative" id="navbarSupportedContent">
+                    <div className="collapse navbar-collapse w-75 mt-2 position-relative" id="navbarSupportedContent">
                         {/* <form className="mx-auto mx-md-0 d-flex w-75 rounded-2" role="search">
                             <input className="form-control me-2 rounded-1 " type="search" placeholder="Search 5000+ Brands Coupons & Promo Codes" aria-label="Search" />
 
                         </form> */}
-                         <form className="mx-auto mx-md-0 d-flex w-75 rounded-2" role="search">
+                        <form className="mx-auto mx-md-0 d-flex w-75 rounded-2" role="search">
                             <input className="form-control  rounded-1" type="search" placeholder="Search 5000+ Brands Coupons & Promo Codes" aria-label="Search" onChange={(e) => handleSearch(e.target.value)} />
                             <div class="w-75 top-100 pl-0 position-absolute header-search z-2">
                                 {
@@ -118,8 +122,8 @@ const Header2 = ({ data }) => {
                     </div>
                 </div>
             </nav>
-            <nav className="navbar navbar-expand-lg bg-white">
-                <div className="container">
+            <nav className="navbar navbar-expand-lg py-0 bg-white">
+                <div className="container ">
 
 
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
@@ -131,7 +135,7 @@ const Header2 = ({ data }) => {
 
                             </li>
                             <li className="nav-item dropdown">
-                                
+
                                 <Link href="/category" className="nav-link dropdown-toggle"  >
                                     Category
                                 </Link >

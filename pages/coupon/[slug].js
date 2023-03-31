@@ -9,6 +9,30 @@ import ReactPaginate from 'react-paginate';
 import Layout from '../Layout'
 
 
+export const getStaticPaths = async () => {
+    const response = await fetch(`${APP_URL}api/coupon_type?key=${APP_KEY}`)
+    const data = await response.json();
+
+    const paths = data?.map((item) => {
+        return { params: { slug: item?.slug } }
+    })
+
+    return {
+        paths,
+        fallback: true
+    }
+}
+
+export async function getStaticProps({ params }) {
+
+    const { slug } = params;
+    const response = await fetch(`${APP_URL}api/coupon?key=${APP_KEY}&type=${slug}`)
+    const data = await response.json();
+
+    return {
+        props: { coupon: data },
+    };
+}
 
 
 
@@ -53,7 +77,7 @@ function PaginatedItems({ itemsPerPage, items, coupondropdown }) {
     );
 }
 
-const coupon = () => {
+const coupon = ({ coupon }) => {
 
     const [coupondropdown, setcoupondropdown] = useState([])
 
@@ -64,32 +88,46 @@ const coupon = () => {
     const [loading, setloading] = useState(true)
 
     useEffect(() => {
+        // setloading(true);
+        // fetch(`${APP_URL}api/coupon?key=${APP_KEY}&type=${slug}`).then(res => res.json()).then((dta) => { 
+        //     setcoupondropdown(dta);
+        //     setloading(false);
+        // }).catch(err => {
+        //     setloading(false);
+        //     setError(true);
+        // })
+
         setloading(true);
-        fetch(`${APP_URL}api/coupon?key=${APP_KEY}&type=${slug}`).then(res => res.json()).then((dta) => {
-            // fetch(`${APP_URL}api/coupon?key=${APP_KEY}&type=${slug}&page=1&paginate=10`).then(res => res.json()).then((dta) => {
-            setcoupondropdown(dta);
+        if (coupon) {
             setloading(false);
-        }).catch(err => {
-            setloading(false);
-            setError(true);
-        })
+            setError(null)
+        }
+        if (coupon.success === false) {
+            setError('No Coupon Found!')
+        }
+
+
+        setcoupondropdown(coupon);
+
     }, [slug])
 
     if (loading) return <div className='bg-white vh-100 vw-100 d-flex justify-content-center overflow-hidden align-items-center position-fixed top-0 start-0 z-1'><Spinner /></div>
 
     return (
-         <Layout title={`${coupondropdown?.name || DEFAULT_TITLE}`} metaDescription={`${coupondropdown?.data?.store?.seo_description || DEFAULT_DESC}`} metaKeywords={`${coupondropdown?.data?.store?.meta_key}`} metaTitle={`${coupondropdown?.data?.store?.seo_title}`}>
-        <div className="container my-3">
-            <div className="row justify-content-center">
-                <div className="col-md-10 p-0">
-                    <h2 className='ms-3'> {coupondropdown.name} Coupons & Promo Codes</h2>
-                    <div className="my-4">
-                        <PaginatedItems itemsPerPage={10} items={coupondropdown?.data} coupondropdown={coupondropdown} />
+        <Layout title={`${coupondropdown?.name || DEFAULT_TITLE}`} metaDescription={`${coupondropdown?.data?.store?.seo_description || DEFAULT_DESC}`} metaKeywords={`${coupondropdown?.data?.store?.meta_key}`} metaTitle={`${coupondropdown?.data?.store?.seo_title}`}>
+            <div className="container my-3">
+                <div className="row justify-content-center">
+                    <div className="col-md-10 p-0">
+                        <h2 className='ms-3'> {coupondropdown.name} Coupons & Promo Codes</h2>
+                        <div className="my-4">
+                            {err ? <p className='text-center my-auto py-5'>{err}</p> :
+                                <PaginatedItems itemsPerPage={10} items={coupondropdown?.data} coupondropdown={coupondropdown} />
+                            }
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-         </Layout>
+        </Layout>
     )
 }
 
