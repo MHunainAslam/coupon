@@ -56,7 +56,7 @@ const Couponcard = ({ data, item, img }) => {
                                 <div class="btncard_link position-relative ">
 
 
-                                    <Link href="" class="btn btn-sm px-5 why w-100 show-code-2-btn position-relative bg-orange btn code-btn  text-white font-weight-bold">
+                                    <Link href="" class="btn btn-sm  why w-100 show-code-2-btn position-relative bg-orange btn code-btn  text-white font-weight-bold">
                                         <span>Show Code</span>
                                     </Link>
 

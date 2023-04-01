@@ -60,8 +60,8 @@ export default function App({ Component, pageProps }) {
               --secondary: ${data?.color?.secondary || '#1b96b8'};
               --header: ${data?.header?.background || 'blue'} ;
               --header-text: ${data?.header?.color || 'white'} ;
-              --header-btn-bg: ${data?.header?.button_color || 'white'} ;
-              --header-btn-text: ${data?.header?.button_background || 'black'} ;
+              --header-btn-bg: ${data?.header?.button_background || 'white'} ;
+              --header-btn-text: ${data?.header?.button_color || 'black'} ;
               --footer-bg: ${data?.footer?.background || 'blue'} ;
               --footer-text: ${data?.footer?.color || 'white'} ;
               

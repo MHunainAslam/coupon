@@ -84,7 +84,7 @@ const Header1 = ({ data }) => {
             setSearchQuery([])
         }
     }
-    
+
     return (
         <>
 
@@ -93,9 +93,12 @@ const Header1 = ({ data }) => {
                     <Link className="navbar-brand col-md-2 col-4" href="/">
                         <Image src={data?.url + "/" + data?.logo?.header || logo} alt="" className={'position-relative my-1 header-logo w-100'} fill={true} />
                     </Link>
-                    <button className="navbar-toggler " type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <span className="navbar-toggler-icon"></span>
+                    <button className="navbar-toggler shadow-none " type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="currentColor" class="bi bi-justify text-header" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M2 12.5a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z" />
+                        </svg>
                     </button>
+                
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul className="navbar-nav ms-2 mb-2 mb-lg-0 nav-css ">
                             <li className="nav-item ">
@@ -153,7 +156,7 @@ const Header1 = ({ data }) => {
                                 </ul>
                             </li>
                             <li className="nav-item dropdown memorial-btn">
-                                <Link href={`${data.header.button_url}`} className='button button-primary'>{data.header.button_text}</Link >
+                                <Link href={`${data.header.button_url}`} className='button header-btn-bg header-btn-text'>{data?.header?.button_text}</Link >
                             </li>
 
                         </ul>

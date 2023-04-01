@@ -175,7 +175,8 @@ const Header2 = ({ data }) => {
                             </li>
 
                             <li className="nav-item dropdown memorial-btn">
-                                <Link href={data.header.button_url} className='button button-primary py-1 px-2'>{data.header.button_text}</Link >
+                                {/* <Link href={data.header.button_url} className='button button-primary py-1 px-2'>{data.header.button_text}</Link > */}
+                                <Link href={`${data.header.button_url}`} className='button header-btn-bg header-btn-text'>{data?.header?.button_text}</Link >
                             </li>
 
                         </ul>
