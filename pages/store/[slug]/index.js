@@ -11,20 +11,20 @@ import Layout from '../../Layout';
 import Favoritebrands from '@/components/Favoritebrands';
 
 
-export const getStaticPaths = async () => {
-    const response = await fetch(`${APP_URL}api/store?key=${APP_KEY}&graph=popular&paginate=5`)
-    const data = await response.json();
-    const paths = data?.data?.data?.map((item) => {
-        return { params: { slug: item?.slug } }
-    })
+// export const getStaticPaths = async () => {
+//     const response = await fetch(`${APP_URL}api/store?key=${APP_KEY}&graph=popular`)
+//     const data = await response.json();
+//     const paths = data?.data?.map((item) => {
+//         return { params: { slug: item?.slug } }
+//     })
 
-    return {
-        paths,
-        fallback: true
-    }
-}
+//     return {
+//         paths,
+//         fallback: true
+//     }
+// }
 
-export async function getStaticProps({ params }) {
+export async function getServerSideProps({ params }) {
 
     const { slug, id } = params;
 
