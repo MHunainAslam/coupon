@@ -3,12 +3,13 @@ import Image from 'next/image'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
 
-const sidepanel = ({ sidepanelapi, img }) => {
+const sidepanel = ({ data, sidepanelapi, img }) => {
 
 
-console.log(sidepanelapi);
+console.log("A" , data);
     return (
         <>
+        {data?.Style === 2 ? "aaa" : "bbb"}
             <div className="product-sidepanelapi bg-white p-4">
                 <div className="side-img">
                     <Image src={`${!img ? '' : img + "/" + sidepanelapi?.data?.store?.logo}`} fill={true} className='h-100 w-100 position-relative' />

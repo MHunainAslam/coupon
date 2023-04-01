@@ -41,7 +41,7 @@ export async function getStaticProps({ params }) {
 
 
 const Storedetail = ({ store, data }) => {
-
+console.log("fff", data);
   const dta = useRouter()
   let slug = dta?.query?.slug;
   let couponid = dta?.query?.couponid;
@@ -73,8 +73,9 @@ const Storedetail = ({ store, data }) => {
 
       <div className="container">
         <div className='row'>
+          
           <div className="col-md-3 col-12  my-md-5 my-2 h-100">
-            <Sidepanel sidepanelapi={singlestore} img={singlestore.url} />
+            <Sidepanel sidepanelapi={singlestore} img={singlestore.url} data={data}/>
           </div>
           <div className="col-md-9 col-12 my-md-5 my-2 px-2">
             <Detail storedetailapi={singlestore} img={singlestore.url} />

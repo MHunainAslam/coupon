@@ -1,3 +1,4 @@
+import { APP_URL } from '@/config'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
@@ -42,19 +43,19 @@ console.log("aas",coupon);
                         <div className=" coupon-social d-md-block d-none">
                             <ul class="list-unstyled d-flex mb-0">
                                 <li class="px-3">
-                                    <Link href="http://www.facebook.com/sharer.php?u=https://morecouponcode.com/store/kara-coupon-code/6949" target="_blank">
+                                    <Link href={`http://www.facebook.com/sharer.php?u=${APP_URL}/store/${coupon.title}/${coupon.id}`} target="_blank">
                                         <span><i class={`fab fa-facebook text-${!coupon?.code ? 'secondary' : 'primary'}`} aria-hidden="true"></i></span>
                                     </Link>
                                 </li>
 
                                 <li class="px-3">
-                                    <Link href="https://wa.me/?text=https://morecouponcode.com/store/kara-coupon-code/6949" target="_blank">
+                                    <Link href={`https://wa.me/?text=${APP_URL}/store/${coupon.title}/${coupon.id}`} target="_blank">
                                         <span><i class={`fab fa-whatsapp text-${!coupon?.code ? 'secondary' : 'primary'}`} aria-hidden="true"></i></span>
                                     </Link>
                                 </li>
 
                                 <li class="px-3">
-                                    <Link href=" https://telegram.me/share/url?url=https://morecouponcode.com/store/kara-coupon-code/6949">
+                                    <Link href={`https://telegram.me/share/url?url=${APP_URL}/store/${coupon.title}/${coupon.id}`}>
                                         <span><i class={`fab fa-telegram-plane text-${!coupon?.code ? 'secondary' : 'primary'}`} aria-hidden="true"></i></span>
                                     </Link>
                                 </li>
