@@ -38,7 +38,7 @@ const Popular = ({ styledata }) => {
                 <h3 className='head1'>
                     {styledata.Style === 1 ? " Most Popular Stores" : "Your Most Favorite Stores"}
                 </h3>
-                <div className="row">
+                <div className="row p-2">
                     {stores?.data?.map((item) => {
                         return <StoreItem item={item} img={img} data={styledata} />
                     })}

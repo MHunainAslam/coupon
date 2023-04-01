@@ -1,4 +1,4 @@
-import { APP_KEY, APP_URL } from '@/config'
+import { APP_KEY, APP_URL, FOOTER_ABOUT } from '@/config'
 import Image from 'next/image'
 import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
@@ -57,9 +57,8 @@ const Footer2 = () => {
                             <div className="footer-2-logo">
                                 <Image src={logo} className="w-75  h-100 "></Image>
                             </div>
-                            {about.map((item) => {
-                                return <p className='text-white'>{item}</p>
-                            })}
+                            <p className='text-white'>{FOOTER_ABOUT}</p>
+
                             <ul className='footer-link footer2-icon  p-0 text-white pt-1 d-flex'>
                                 <li><Link href=""> <i className='fab fa-facebook-f'></i></Link></li>
                                 <li><Link href=""> <i className='fab fa-pinterest-p'></i></Link></li>
@@ -76,21 +75,21 @@ const Footer2 = () => {
                                         </li>
                                     })}
                                     <li className='mb-1'>
-                                         <Link href="/contact">Contact Us</Link>
+                                        <Link href="/contact">Contact Us</Link>
                                     </li>
-                                     
+
                                 </ul>
                             </div>
                             <div className="col-md-4 ">
                                 <h2 className='my-auto text-white fw-bolder'>Shop By Country</h2>
                                 <ul className='footer-link p-0 text-white pt-3'>
                                     {country?.data?.map((ShopByCountryli) => {
-                                         return <li className='mb-1'>
-                                         <Link href={`/coupon/${ShopByCountryli.slug}`}>{ShopByCountryli.name}</Link>
-                                     </li>
+                                        return <li className='mb-1'>
+                                            <Link href={`/coupon/${ShopByCountryli.slug}`}>{ShopByCountryli.name}</Link>
+                                        </li>
                                     })}
 
-                                </ul> 
+                                </ul>
                             </div>
                             <div className="col-md-4 ">
                                 <h2 className='my-auto text-white fw-bolder'>What's Trending</h2>

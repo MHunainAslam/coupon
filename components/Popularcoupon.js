@@ -67,7 +67,7 @@ const Popularcoupon = ({ data }) => {
         <>
                 <div className="container mt-5">
                     <h3 className='head1 pt-5'>Most Popular Coupons</h3>
-                    <div className='row '>
+                    <div className='row p-2'>
                         {coupon?.data?.map((item) => {
                             return <div className="col-12 col-sm-6 col-md-3 my-1 p-1">
                                 <Couponcard item={item} data={data} img={img}/>
