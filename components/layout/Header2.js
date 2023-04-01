@@ -98,7 +98,7 @@ const Header2 = ({ data }) => {
                         </form> */}
                         <form className="mx-auto mx-md-0 d-flex w-75 rounded-2" role="search">
                             <input className="form-control  rounded-1" type="search" placeholder="Search 5000+ Brands Coupons & Promo Codes" aria-label="Search" onChange={(e) => handleSearch(e.target.value)} />
-                            <div class="w-75 top-100 pl-0 position-absolute header-search z-2">
+                            <div class="w-75 top-100 pl-0 z-2 position-absolute header-search z-2">
                                 {
                                     isActive &&
 

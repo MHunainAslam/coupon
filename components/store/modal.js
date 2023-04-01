@@ -2,35 +2,36 @@ import Link from 'next/link'
 import React, { useState } from 'react'
 
 const modal = ({ popup, store }) => {
-    const data = {
-        modal: {
-            brand: 'first',
-            title: 'Koio - 20% Off Sitewide - March 2023',
-            getoff: 'Get 20% Off On All Order At  Koio. (Latest Black Friday Sale)',
-            // code: '89K6-8D83-KD45-M310'
-        }
-    }
+    // const data = {
+    //     modal: {
+    //         brand: 'first',
+    //         title: 'Koio - 20% Off Sitewide - March 2023',
+    //         getoff: 'Get 20% Off On All Order At  Koio. (Latest Black Friday Sale)',
+    //         // code: '89K6-8D83-KD45-M310'
+    //     }
+    // }
     const [isOpen, setIsOpen] = useState(true)
     return (
         <div class={`modal ${isOpen && 'fade show d-block'}`} tabindex="-1" aria-modal="true" role="dialog">
-            <div class="modal-dialog">
+            <div class="modal-dialog m-0  h-100 d-flex align-items-center">
                 <div class="modal-content">
                     <div class="modal-header bg-light">
-                        <h3 class="modal-title fs-5" id="exampleModalLiveLabel">More {store} coupon</h3>
+                        <h3 class="modal-title fs-5 text-decoration-underline" id="exampleModalLiveLabel">
+                        &lt; More {store} coupon</h3>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onClick={() => setIsOpen(!isOpen)}></button>
                     </div>
                     <div class="modal-body">
                         <Link className='h5 text-secondary' href="#">{popup?.title}</Link>
                         <p className='tr-2 my-1' dangerouslySetInnerHTML={{ __html: popup?.description }}></p>
                         <div className='text-center mt-3'>
-                            <small className={`p-2 m-5  ${popup?.code ? 'bg-code  h3' : ''}`}>{popup?.code || 'No Coupon Needed'}</small> <br />
+                            <small className={`p-2   ${popup?.code ? 'bg-code  h3' : ''}`}>{popup?.code || 'No Coupon Needed'}</small> <br />
                             <Link href={`${popup?.url}`} className='button button-secondary my-4' onClick={() => navigator.clipboard.writeText(`${popup?.code}`)}>{popup?.code ? `Copy and Go To the ${store}` : `Go To the ${store}`}</Link>
                         </div>
                     </div>
-                    <div class=" text-center">
-                        <h5>Share With Friends</h5>
+                    <div class="p-3">
+                        <h5>Share With Friends</h5> <br />
                         <div className=" modal-social ">
-                            <ul class="list-unstyled d-flex justify-content-center mb-0">
+                            <ul class="list-unstyled d-flex justify-content-start mb-0">
                                 <li class="p-3   ">
                                     <Link href="http://www.facebook.com/sharer.php?u=https://morecouponcode.com/store/kara-coupon-code/6949" target="_blank">
                                         <span>

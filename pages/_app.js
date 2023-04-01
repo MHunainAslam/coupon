@@ -61,7 +61,7 @@ export default function App({ Component, pageProps }) {
               --header: ${data?.header?.background || 'blue'} ;
               --header-text: ${data?.header?.color || 'white'} ;
               --header-btn-bg: ${data?.header?.button_background || 'white'} ;
-              --header-btn-text: ${data?.header?.button_color || 'black'} ;
+              --header-btn-text: ${data?.header?.button_color || 'white'} ;
               --footer-bg: ${data?.footer?.background || 'blue'} ;
               --footer-text: ${data?.footer?.color || 'white'} ;
               

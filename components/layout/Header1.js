@@ -162,19 +162,19 @@ const Header1 = ({ data }) => {
                         </ul>
                         <form className="d-flex mx-auto position-relative col-md-3 flex-column" role="search">
                             <input className="form-control me-2 rounded-0 " type="search" placeholder="Search..." aria-label="Search" onChange={(e) => handleSearch(e.target.value)} />
-                            <div class="w-100 top-100 pl-0 position-absolute header-search">
+                            <div class="w-100 z-2 top-100 pl-0 position-absolute header-search">
                                 {
                                     isActive &&
 
                                         isLoading ?
 
-                                        <div class="list-group" ><a class="list-group-item list-group-item-action rounded-0">Loading...</a></div>
+                                        <div class="list-group" ><a class="list-group-item list-group-item-action z-index-2  rounded-0">Loading...</a></div>
 
                                         :
 
                                         searchQuery.length ?
                                             searchQuery.map(item => {
-                                                return <div class="list-group" ><Link href={`/store/${item.slug}`} class="list-group-item list-group-item-action rounded-0">{item.name}</Link></div>
+                                                return <div class="list-group" ><Link href={`/store/${item.slug}`} class="list-group-item list-group-item-action rounded-0 ">{item.name}</Link></div>
                                             })
 
                                             :

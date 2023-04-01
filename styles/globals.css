@@ -27,6 +27,9 @@ a {
 
 }
 
+.header-search>div a:hover {
+  opacity: 1 !important;
+}
 .header-search {
   max-height: 70vh;
   overflow: auto;
@@ -322,7 +325,7 @@ main[store-style="1"] .button {
 
 .modal-social ul li {
   background-color: #eeee;
-  margin: 10px;
+  margin-right: 10px;
   border-radius: 50%;
 }
 
