@@ -73,10 +73,10 @@ const Storedetail = ({ store, data }) => {
 
       <div className="container">
         <div className='row'>
-          <div className="col-md-3 col-12  my-5 h-100">
+          <div className="col-md-3 col-12  my-md-5 my-2 h-100">
             <Sidepanel sidepanelapi={singlestore} img={singlestore.url} />
           </div>
-          <div className="col-md-9 col-12 my-5 px-2">
+          <div className="col-md-9 col-12 my-md-5 my-2 px-2">
             <Detail storedetailapi={singlestore} img={singlestore.url} />
           </div>
         </div>
