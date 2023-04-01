@@ -13,7 +13,7 @@ const modal = ({ popup, store }) => {
     const [isOpen, setIsOpen] = useState(true)
     return (
         <div class={`modal ${isOpen && 'fade show d-block'}`} tabindex="-1" aria-modal="true" role="dialog">
-            <div class="modal-dialog m-0  h-100 d-flex align-items-center">
+            <div class="modal-dialog m-0  h-100 d-flex align-items-center mx-auto">
                 <div class="modal-content">
                     <div class="modal-header bg-light">
                         <h3 class="modal-title fs-5 text-decoration-underline" id="exampleModalLiveLabel">
