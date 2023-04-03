@@ -17,8 +17,10 @@ const Popular = ({ styledata }) => {
     const [img, setImg] = useState('');
  
     useEffect(() => {
-        fetch(`${APP_URL}api/store?key=${APP_KEY}&graph=popular${styledata.Style === 1 ? '&paginate=28' : ''}`).then(res => res.json()).then((stores) => {
-            setStores(styledata.Style === 1 ? stores?.data : stores);
+        // fetch(`${APP_URL}api/store?key=${APP_KEY}&graph=popular${styledata.Style === 1 ? '&paginate=28' : ''}`).then(res => res.json()).then((stores) => {
+        fetch(`${APP_URL}api/store?key=${APP_KEY}&graph=popular`).then(res => res.json()).then((stores) => {
+            // setStores(styledata.Style === 1 ? stores?.data : stores);
+            setStores(stores);
             setImg(stores?.url);
             setLoading(false);
             // setImg(popular.url)
@@ -43,12 +45,12 @@ const Popular = ({ styledata }) => {
                         return <StoreItem item={item} img={img} data={styledata} />
                     })}
                 </div>
-                {styledata.Style === 1 ?
+                {/* {styledata.Style === 1 ?
                     <div className="col-12 text-center my-3">
                         <Link href='/all-stores' className={`p-2 button  ${styledata?.Style === 1 ? 'button-primary' : 'button-secondary'}`}>View All</Link>
                     </div>
                     :
-                    ''}
+                    ''} */}
             </div>
 
         </>

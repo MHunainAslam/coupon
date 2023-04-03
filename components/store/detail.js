@@ -6,7 +6,7 @@ import { toast } from 'react-hot-toast'
 import Coupon from './coupon'
 import Expire from './expire'
 
-const detail = ({ storedetailapi, img }) => {
+const detail = ({ storedetailapi, img , data}) => {
 
     // if (storedetailapi.data?.coupon) {
     //     let GivenDate = new Date(data.coupon.expiry_date.split(" ")[0].replace(/-/g, "/"))
@@ -90,7 +90,7 @@ const detail = ({ storedetailapi, img }) => {
                     return new Date(item.expire_date) > new Date() ?
 
                         <div className=" ">
-                            <Coupon coupon={item} img={img + "/" + storedetailapi?.data?.store?.logo} />
+                            <Coupon coupon={item} img={img + "/" + storedetailapi?.data?.store?.logo} data={data} />
                         </div> : ''
                 }
                 )}

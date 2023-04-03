@@ -14,7 +14,7 @@ const horizentalcoupon = ({ data, coupon, is_ico, img }) => {
         "July", "August", "September", "October", "November", "December"
     ];
 
-    console.log("aas", coupon);
+    console.log("aas", data);
     return (
 
         <>
@@ -22,7 +22,7 @@ const horizentalcoupon = ({ data, coupon, is_ico, img }) => {
                 <div className=" bg-white  my-2 h-100 px-3 py-2 coupon d-flex">
                     <div className="col-2  my-auto">
 
-                        <Image src={img} fill={true} className='h-auto position-relative' />
+                        <Image src={img} fill={true} className='h-85-px object-fit-contain position-relative' />
 
                     </div>
                     <div className="col-8 my-auto px-4">
@@ -82,7 +82,7 @@ const horizentalcoupon = ({ data, coupon, is_ico, img }) => {
                     <div className="d-flex">
                         <div className="col-2  my-auto">
 
-                            <Image src={img} fill={true} className='h-auto position-relative' />
+                            <Image src={img} fill={true} className='h-85-px object-fit-contain position-relative' />
 
                         </div>
                         <div className="col-8 my-auto px-4">

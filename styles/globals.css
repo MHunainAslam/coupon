@@ -282,7 +282,10 @@ main[store-style="1"] .button {
   height: 100%;
 
 }
-
+.modal-logo{
+ width: 50% !important;
+ /* height: auto !im; */
+}
 .head1 {
   margin-bottom: 0.5rem;
   font-weight: 500;
@@ -529,7 +532,7 @@ main[store-style="2"] .dropdown-item-hov:hover {
 }
 
 .h-85-px {
-  height: 85px;
+  height: 85px !important;
 }
 
 .show-code-2 {

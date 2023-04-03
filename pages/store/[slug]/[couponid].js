@@ -78,13 +78,13 @@ console.log("fff", data);
             <Sidepanel sidepanelapi={singlestore} img={singlestore.url} data={data}/>
           </div>
           <div className="col-md-9 col-12 my-md-5 my-2 px-2">
-            <Detail storedetailapi={singlestore} img={singlestore.url} />
+            <Detail storedetailapi={singlestore} img={singlestore.url}  data={data}/>
           </div>
         </div>
       </div>
       {dta.query.couponid &&
 
-        <Modal popup={singlestore?.data?.popup_coupon} store={singlestore?.data?.store?.name} />}
+        <Modal popup={singlestore?.data?.popup_coupon} store={singlestore?.data?.store?.name} data={data} img={data.url} />}
 
       <Favoritebrands styledata={data} />
 

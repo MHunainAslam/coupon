@@ -36,7 +36,7 @@ export async function getStaticProps({ params }) {
 
 
 
-function PaginatedItems({ itemsPerPage, items, coupondropdown }) {
+function PaginatedItems({ itemsPerPage, items, coupondropdown , data }) {
     const [itemOffset, setItemOffset] = useState(0);
 
     const endOffset = itemOffset + itemsPerPage;
@@ -59,7 +59,7 @@ function PaginatedItems({ itemsPerPage, items, coupondropdown }) {
                 {currentItems &&
                     currentItems.map((item) => {
                         return <div className="px-1 my-0 col-12">
-                            <Categorycrad coupon={item} is_ico={false} img={coupondropdown?.url + "/" + item?.store_logo} />
+                            <Categorycrad coupon={item} is_ico={false} img={coupondropdown?.url + "/" + item?.store_logo} data={data}/>
                         </div>
                     })}
             </div>
@@ -112,7 +112,7 @@ const coupon = ({ coupon, data }) => {
                         <h2 className='ms-3'> {coupondropdown.name} Coupons & Promo Codes</h2>
                         <div className="my-4">
                             {err ? <p className='text-center my-auto py-5'>{err}</p> :
-                                <PaginatedItems itemsPerPage={10} items={coupondropdown?.data} coupondropdown={coupondropdown} />
+                                <PaginatedItems itemsPerPage={10} items={coupondropdown?.data} coupondropdown={coupondropdown} data={data}/>
                             }
                         </div>
                     </div>

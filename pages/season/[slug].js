@@ -73,7 +73,7 @@ const Seasonpage = ({ data, season }) => {
 
                             {seasondropdown?.data?.map((item) => {
                                 return <div className="px-1 my-0 ">
-                                    <Categorycrad coupon={item} styledata={data} img={seasondropdown?.url + "/" + item.store_logo} />
+                                    <Categorycrad coupon={item} styledata={data} img={seasondropdown?.url + "/" + item.store_logo} data={data}/>
                                 </div>
                             })}
                         </div>
