@@ -20,7 +20,7 @@ const Couponcard = ({ data, item, img }) => {
                         <Link href={`/store/${item.store_slug}`} className='text-black new-coupon-title'>{item.store_name}</Link>
                         <div>
                             {/* {item.url} */}
-                            <Link href={`${item.url}`} onClick={() => { window.open(`/store/${item.store_slug}/${item.id}`) }} className={`coupon-btn py-1 px-md-5 px-2 mt-1  button button-${item.type === 'Coupon Code' ? 'secondary' : 'primary'}`}  >
+                            <Link href={`${item.url}`} onClick={() => { window.open(`/store/${item.store_slug}/${item.id}`) }} className={`coupon-btn py-1 px-0 col-6 mt-1  button button-${item.type === 'Coupon Code' ? 'secondary' : 'primary'}`}  >
                                 {item.type === 'Coupon Code' ? 'Show Code' : 'Show Deal'}
                             </Link>
 

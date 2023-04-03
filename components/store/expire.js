@@ -15,7 +15,7 @@ const expire = ({ expire, img }) => {
             <div className="col-md-2 my-auto">
                 <Image src={`${img || ''}`} fill={true} className='h-85-px object-fit-contain position-relative' />
             </div>
-            <div className="col-8 my-auto px-4">
+            <div className="col-8 my-auto px-2 px-md-4">
                 <Link href="#" className={`h3 text-expired`}>{expire.title}</Link>
                 <p className='tr-2 my-1 d-md-block d-none fs-px' dangerouslySetInnerHTML={{ __html: expire.description }}></p>
 

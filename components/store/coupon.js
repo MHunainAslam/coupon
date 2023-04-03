@@ -25,8 +25,8 @@ const horizentalcoupon = ({ data, coupon, is_ico, img }) => {
                         <Image src={img} fill={true} className='h-85-px object-fit-contain position-relative' />
 
                     </div>
-                    <div className="col-8 my-auto px-4">
-                        <Link href="#" className={`h3 text-${!coupon?.code ? 'secondary' : 'primary'}`}>{coupon?.title}</Link>
+                    <div className="col-8 my-auto px-2 px-md-4">
+                        <Link href="#" className={`h3 coupon-code-card-head text-${!coupon?.code ? 'secondary' : 'primary'}`}>{coupon?.title}</Link>
                         <p className='tr-2 my-1 d-md-block d-none fs-px' dangerouslySetInnerHTML={{ __html: coupon.description }}></p>
                         {coupon.featured === 'on' ? <p class="expiredate m-0   text-primary"><i class="fas fa-star  text-primary" aria-hidden="true"></i> New Coupon</p> : ''}
 
@@ -68,8 +68,8 @@ const horizentalcoupon = ({ data, coupon, is_ico, img }) => {
                     </div>
 
                     <div className=" col-2 text-end m-auto my-auto">
-                        <Link href={`${coupon?.url || ''}`} onClick={() => { window.open(`/store/${slug?.query?.slug}/${coupon?.id}`) }} className={`p-2 d-md-block d-none button button-${!coupon?.code ? 'secondary' : 'primary'}`}  >
-                            {!coupon?.code ? 'Show Code' : 'Show Deal'}
+                        <Link href={`${coupon?.url || ''}`} onClick={() => { window.open(`/store/${slug?.query?.slug}/${coupon?.id}`) }} className={`p-2 d-md-block d-none button button-${!coupon?.code ? 'primary' : 'secondary'}`}  >
+                            {!coupon?.code ? 'Show Deal' : 'Show Code'}
                         </Link>
                         <Link href={`${coupon?.url || ''}`} onClick={() => { window.open(`/store/${slug?.query?.slug}/${coupon?.id}`) }} className={`p-2  d-md-none d-block button button-${!coupon?.code ? 'secondary' : 'primary'}`}  >
                             {!coupon?.code ? '>' : '>'}
@@ -85,7 +85,7 @@ const horizentalcoupon = ({ data, coupon, is_ico, img }) => {
                             <Image src={img} fill={true} className='h-85-px object-fit-contain position-relative' />
 
                         </div>
-                        <div className="col-8 my-auto px-4">
+                        <div className="col-8 my-auto px-2 px-md-4">
                             <Link href="#" className={`h3 text-black`}>{coupon?.title}</Link>
                             <p className='tr-2 my-1 d-md-block lh-1 d-none fs-6' dangerouslySetInnerHTML={{ __html: coupon.description }}></p>
                             {coupon.featured === 'on' ? <p class="expiredate m-0   text-primary"><i class="fas fa-star  text-primary" aria-hidden="true"></i> New Coupon</p> : ''}

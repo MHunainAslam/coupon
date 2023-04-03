@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import logo from '@/public/assets/logo.png'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import country from '@/pages/country/[slug]'
@@ -85,6 +85,8 @@ const Header1 = ({ data }) => {
         }
     }
 
+    const closeMenu = useRef();
+
     return (
         <>
 
@@ -93,49 +95,49 @@ const Header1 = ({ data }) => {
                     <Link className="navbar-brand col-md-2 col-4" href="/">
                         <Image src={data?.url + "/" + data?.logo?.header || logo} alt="" className={'position-relative my-1 header-logo w-100'} fill={true} />
                     </Link>
-                    <button className="navbar-toggler shadow-none " type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <button className="navbar-toggler shadow-none " ref={closeMenu} type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="currentColor" class="bi bi-justify text-header" viewBox="0 0 16 16">
                             <path fill-rule="evenodd" d="M2 12.5a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z" />
                         </svg>
                     </button>
-                
+
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul className="navbar-nav ms-2 mb-2 mb-lg-0 nav-css ">
                             <li className="nav-item ">
-                                <Link className="nav-link active text-header" aria-current="page" href="/all-stores">Stores</Link >
+                                <Link onClick={closeMenu.current?.click()} className="nav-link active text-header" aria-current="page" href="/all-stores" >Stores</Link >
                             </li>
 
                             <li className="nav-item dropdown">
-                                <Link className="nav-link dropdown-toggle  text-header" href="/category">
+                                <Link onClick={closeMenu.current?.click()} className="nav-link dropdown-toggle  text-header" href="/category">
                                     Category
                                 </Link>
                                 <ul className="dropdown-menu rounded-0">
                                     {category?.data?.map((cat) => {
-                                        return <li ><Link className="dropdown-item dropdown-item-hov " href={`/category/${cat.slug}`}>{cat.name}</Link >
+                                        return <li ><Link onClick={closeMenu.current?.click()} className="dropdown-item dropdown-item-hov " href={`/category/${cat.slug}`}>{cat.name}</Link >
                                         </li>
                                     })}
                                 </ul>
                             </li>
 
                             <li className="nav-item dropdown">
-                                <Link className="nav-link dropdown-toggle text-header" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <Link onClick={closeMenu.current?.click()} className="nav-link dropdown-toggle text-header" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     Coupons
                                 </Link >
                                 <ul className="dropdown-menu rounded-0">
                                     {coupons?.map((coupondd) => {
-                                        return <li ><Link className="dropdown-item dropdown-item-hov" href={`/coupon/${coupondd.slug}`}>{coupondd.name}</Link>
+                                        return <li ><Link onClick={closeMenu.current?.click()} className="dropdown-item dropdown-item-hov" href={`/coupon/${coupondd.slug}`}>{coupondd.name}</Link>
                                         </li>
 
                                     })}
                                 </ul>
                             </li>
                             <li className="nav-item dropdown">
-                                <Link className="nav-link dropdown-toggle text-header" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <Link onClick={closeMenu.current?.click()} className="nav-link dropdown-toggle text-header" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     Season
                                 </Link >
                                 <ul className="dropdown-menu rounded-0">
                                     {season?.data?.map((seasondd) => {
-                                        return <li ><Link className="dropdown-item dropdown-item-hov" href={`/season/${seasondd.slug}`}>{seasondd.name}</Link>
+                                        return <li ><Link onClick={closeMenu.current?.click()} className="dropdown-item dropdown-item-hov" href={`/season/${seasondd.slug}`}>{seasondd.name}</Link>
                                         </li>
 
                                     })}
@@ -144,19 +146,19 @@ const Header1 = ({ data }) => {
 
 
                             <li className="nav-item dropdown">
-                                <Link className="nav-link dropdown-toggle text-header" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <Link onClick={closeMenu.current?.click()} className="nav-link dropdown-toggle text-header" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     Country
                                 </Link >
                                 <ul className="dropdown-menu rounded-0">
                                     {country?.map((countrydd) => {
-                                        return <li ><Link className="dropdown-item dropdown-item-hov" href={`/country/${countrydd.slug}`}>{countrydd.name}</Link>
+                                        return <li ><Link onClick={closeMenu.current?.click()} className="dropdown-item dropdown-item-hov" href={`/country/${countrydd.slug}`}>{countrydd.name}</Link>
                                         </li>
 
                                     })}
                                 </ul>
                             </li>
                             <li className="nav-item dropdown memorial-btn">
-                                <Link href={`${data.header.button_url}`} className='button header-btn-bg header-btn-text'>{data?.header?.button_text}</Link >
+                                <Link onClick={closeMenu.current?.click()} href={`${data.header.button_url}`} className='button header-btn-bg header-btn-text'>{data?.header?.button_text}</Link >
                             </li>
 
                         </ul>
@@ -174,7 +176,7 @@ const Header1 = ({ data }) => {
 
                                         searchQuery.length ?
                                             searchQuery.map(item => {
-                                                return <div class="list-group" ><Link href={`/store/${item.slug}`} class="list-group-item list-group-item-action rounded-0 ">{item.name}</Link></div>
+                                                return <div class="list-group" ><Link onClick={closeMenu.current?.click()} href={`/store/${item.slug}`} class="list-group-item list-group-item-action rounded-0 ">{item.name}</Link></div>
                                             })
 
                                             :

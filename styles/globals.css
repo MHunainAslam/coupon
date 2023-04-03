@@ -534,6 +534,9 @@ main[store-style="2"] .dropdown-item-hov:hover {
 .h-85-px {
   height: 85px !important;
 }
+.h-60-px {
+  height: 85px !important;
+}
 
 .show-code-2 {
   border: 1px dashed var(--primary);
@@ -593,7 +596,9 @@ main[store-style="2"] .dropdown-item-hov:hover {
 }
 
 .header-logo {
-  aspect-ratio: 1/0.3;
+  height: 50px !important;
+  width: 180px !important;
+  /* object-fit: contain; */
 }
 
 .show-code-2-btn:hover {
@@ -671,6 +676,12 @@ main[store-style="2"] .dropdown-item-hov:hover {
     width: 33.333333%;
   }
 
+  .header-logo {
+    height: 40px !important;
+    width: 130px !important;
+
+  }
+  
   .popular-width-1 {
     width: 33.333333%;
   }
@@ -685,8 +696,18 @@ main[store-style="2"] .dropdown-item-hov:hover {
   .slick-next {
     right: 0 !important;
   }
+  .coupon-code-card-head{
+    font-size: 12px;
+  }
 
   .slick-prev {
     left: 0 !important;
   }
+  
+.header-logo {
+  height: 30px !important;
+  width: 100px !important;
+  /* object-fit: contain; */
+}
+
 }

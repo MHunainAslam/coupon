@@ -102,11 +102,11 @@ const detail = ({ storedetailapi, img , data}) => {
                     </div>
                     <div class="col-md-7" yth="">
 
-                        <form class="search ajax-form search-alert-signup py-3 d-flex w-100 h-100" id='maill' onSubmit={handleContact}>
+                        <form class="search ajax-form search-alert-signup py-3 d-flex w-100  h-85-px" id='maill' onSubmit={handleContact}>
                             <div class="text-field-holder w-80">
                                 <input id="email_" type="email" name="email" placeholder="Email Address" className='w-100 h-100 px-3' />
                             </div>
-                            <button type="submit" class=" text-white button button-primary ms-3" name="newsletter">
+                            <button type="submit" class=" text-white button button-primary ms-md-3" name="newsletter">
 
                                 {isLoading ? 'Subscribing...' : 'Go'}
 
